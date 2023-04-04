@@ -1,0 +1,50 @@
+
+.header {
+  background-color:#fff;
+  color:#00a0df;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  font-size: 26px;
+  height: 80px;
+}
+
+.h3-black {
+    font-size: 21px;
+    color:#3d3935;
+    margin-top: -12px;
+    
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    height: inherit;
+}
+
+.header-btn {
+  border: none;
+  background-color: transparent;
+  color:#3d3935;
+  font-size: 16px;
+  margin: 0 25px;
+  height: 100%;
+}
+
+.header-btn:hover {
+  cursor: pointer;
+}
+
+.header-btn-reports {
+    border: none;
+    background-color: #00a0df;
+    color:#eaeaea;
+    font-size: 20px;
+    padding: 0 25px;
+    font-weight: 700;
+    height: 100%;
+}
+.header-btn-reports:hover {
+  cursor: pointer;
+}
