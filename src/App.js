@@ -4,8 +4,12 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import HomePage from './pages/HomePage';
 import ONamaPage from './pages/ONamaPage';
-import RasporedPage from './pages/RasporedPage';
-import RezultatiPage from './pages/RezultatiPage';
+import UtakmicePage from './pages/UtakmicePage';
+import TabelaPage from './pages/TabelaPage';
+import TimoviPage from './pages/TimoviPage';
+import StatistikaPage from './pages/StatistikaPage';
+import MediaPage from './pages/MediaPage';
+import KontaktPage from './pages/KontaktPage';
 import Footer from './components/Footer';
 
 function App() {
@@ -15,8 +19,12 @@ function App() {
     <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route path="/onama" element={<ONamaPage />} />
-        <Route path="/raspored" element={<RasporedPage />} />
-        <Route path="/rezultati" element={<RezultatiPage />} />
+        <Route path="/utakmice" element={<UtakmicePage />} />
+        <Route path="/tabela" element={<TabelaPage />} />
+        <Route path="/timovi" element={<TimoviPage />} />
+        <Route path="/statistika" element={<StatistikaPage />} />
+        <Route path="/media" element={<MediaPage />} />
+        <Route path="/kontakt" element={<KontaktPage />} />
       </Routes>
       <Footer />
     </ApplicationProvider>

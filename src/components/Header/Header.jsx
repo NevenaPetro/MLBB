@@ -15,13 +15,24 @@ function Header() {
           <Link to="/onama">
             <button className="header-btn">O nama</button>
           </Link>
-          <Link to="/raspored">
-            <button className="header-btn">Raspored</button>
+          <Link to="/utakmice">
+            <button className="header-btn">Utakmice</button>
           </Link>
-          <Link to="/rezultati">
-            <button className="header-btn">Rezultati</button>
+          <Link to="/tabela">
+            <button className="header-btn">Tabela</button>
           </Link>
-          
+          <Link to="/timovi">
+            <button className="header-btn">Timovi</button>
+          </Link>
+          <Link to="/statistika">
+            <button className="header-btn">Statistika</button>
+          </Link>
+          <Link to="/media">
+            <button className="header-btn">Media</button>
+          </Link>
+          <Link to="/kontakt">
+            <button className="header-btn">Kontakt</button>
+          </Link>
         </nav>
       </header>
     </>
