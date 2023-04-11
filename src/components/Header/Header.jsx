@@ -12,11 +12,12 @@ function Header() {
           </Link>
         </div>
         <nav className="menu">
-          <Link to="/onama">
-            <button className="header-btn">O nama</button>
+          
+          <Link to="/raspored">
+            <button className="header-btn">Raspored</button>
           </Link>
-          <Link to="/utakmice">
-            <button className="header-btn">Utakmice</button>
+          <Link to="/rezultati">
+            <button className="header-btn">Rezultati</button>
           </Link>
           <Link to="/tabela">
             <button className="header-btn">Tabela</button>
@@ -24,11 +25,11 @@ function Header() {
           <Link to="/timovi">
             <button className="header-btn">Timovi</button>
           </Link>
-          <Link to="/statistika">
-            <button className="header-btn">Statistika</button>
-          </Link>
           <Link to="/media">
             <button className="header-btn">Media</button>
+          </Link>
+          <Link to="/onama">
+            <button className="header-btn">O nama</button>
           </Link>
           <Link to="/kontakt">
             <button className="header-btn">Kontakt</button>
