@@ -1,0 +1,32 @@
+import React from "react";
+import { useEffect, useState, useRef } from "react";
+import { getAuth, onAuthStateChange } from "firemase/auth";
+
+export const useAuthStatus = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [checkingStatus, setCheckingStatus] = useState(true);
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    if (isMounted) {
+      const auth = getAuth();
+      onAuthStateChange(auth, (user) => {
+        if (user) {
+          setLoggedIn(true);
+        }
+        setCheckingStatus(false);
+      });
+    }
+
+    return () => {
+      isMounted.current = false;
+    };
+  }, [isMounted]);
+  return { loggedIn, checkingStatus };
+};
+
+// Protected routes in v6:
+// https://stackoveerflow.com/guestions/65505665/protected-route-with-firebase
+
+//fix memory leak warning:
+// https://stackoverflow.com/questions/59780268/cleanup-memory-leaks-on-an-unmounted-component-in-react-hooks

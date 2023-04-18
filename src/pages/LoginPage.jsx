@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { db } from "../firebase.config";
+
 import { Link, useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
@@ -30,6 +30,7 @@ function LoginPage() {
         email,
         password
       );
+      
       if (userCredentials.user) {
         navigate("/");
       }
