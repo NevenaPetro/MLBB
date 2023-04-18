@@ -2,14 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
+import { useAuthStatus } from "../../hooks/useAuthStatus";
 import "../Header/header.css";
 
 function Header() {
+  const { loggedIn, checkingStatus} = useAuthStatus()
   const auth = getAuth();
-  const [formData, setFormData] = useState({
-    email: auth.currentUser.email,
-  });
-  const {email} = formData;
+
+  
   const navigate = useNavigate();
   const onLogout = () => {
     auth.signOut();
@@ -19,8 +19,8 @@ function Header() {
     <>
       <header className="header">
         <div>
-          <h3>My profile</h3>
-          <p>{email}</p>
+          
+          <p>{loggedIn ? auth.currentUser.email : 'bla'}</p>
           <button type="button" onClick={onLogout}>
             Logout
           </button>
