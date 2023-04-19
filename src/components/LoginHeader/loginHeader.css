@@ -1,0 +1,9 @@
+.login-header {
+    display: flex;
+    justify-content: end;
+    margin: 10px 20px;
+
+}
+.login-header span {
+    margin-right: 10px;
+}

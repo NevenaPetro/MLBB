@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ApplicationProvider } from "./context/AplicationContext";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
@@ -12,27 +12,67 @@ import MediaPage from "./pages/MediaPage";
 import KontaktPage from "./pages/KontaktPage";
 import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
-
+import LoginHeader from "./components/LoginHeader/LoginHeader";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  query,
+  doc,
+  deleteDoc,
+  updateDoc,
+} from 'firebase/firestore';
+import { db } from './firebase.config';
 
 function App() {
-  //const [token, setToken] = useState(localStorage.getItem("token"));
-  const bla='bla'
+  const [teams, setTeams] = useState([]);
+  const [locations, setLocations] = useState([]);
+
+
+  useEffect(() => {
+    const fetchTeams = async () => {
+      try {
+        const q = query(collection(db, 'teams'));
+        const querySnap = await getDocs(q);
+        const teams = [];
+
+        querySnap.forEach((doc) => {
+          return teams.push({
+            id: doc.id,
+            name: doc.data().name,
+            group: doc.data().group,
+          });
+        });
+        setTeams(teams);
+      } catch (error) {}
+    };
+    fetchTeams();
+  }, []);
+
+  async function createNewTeam(newTeam) {
+    //setActiveClassName(!activeClassName);
+    const docRef = await addDoc(collection(db, 'teams'), newTeam);
+    newTeam.id = docRef.id;
+    setTeams([...teams, newTeam]);
+  }
+  
+
   return (
-    <ApplicationProvider value={bla}>
+    <ApplicationProvider value={{teams, createNewTeam,}}>
       <Header />
-      
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/raspored" element={<RasporedPage />} />
-          <Route path="/rezultati" element={<RezultatiPage />} />
-          <Route path="/tabela" element={<TabelaPage />} />
-          <Route path="/timovi" element={<TimoviPage />} />
-          <Route path="/media" element={<MediaPage />} />
-          <Route path="/onama" element={<ONamaPage />} />
-          <Route path="/kontakt" element={<KontaktPage />} />
-          <Route path="/login" element={<LoginPage />} />
-        </Routes>
-      
+      <LoginHeader />
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/raspored" element={<RasporedPage />} />
+        <Route path="/rezultati" element={<RezultatiPage />} />
+        <Route path="/tabela" element={<TabelaPage />} />
+        <Route path="/timovi" element={<TimoviPage />} />
+        <Route path="/media" element={<MediaPage />} />
+        <Route path="/onama" element={<ONamaPage />} />
+        <Route path="/kontakt" element={<KontaktPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+
       <Footer />
     </ApplicationProvider>
   );

@@ -1,31 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { getAuth } from "firebase/auth";
-import { useAuthStatus } from "../../hooks/useAuthStatus";
+import { Link } from "react-router-dom";
 import "../Header/header.css";
 
-function Header() {
-  const { loggedIn, checkingStatus} = useAuthStatus()
-  const auth = getAuth();
 
-  
-  const navigate = useNavigate();
-  const onLogout = () => {
-    auth.signOut();
-    navigate("/");
-  };
+function Header() {
   return (
     <>
       <header className="header">
-        <div>
-          
-          <p>{loggedIn ? auth.currentUser.email : 'bla'}</p>
-          <button type="button" onClick={onLogout}>
-            Logout
-          </button>
-        </div>
-
         <div>
           <Link to="/">
             <h3>M L B B</h3>
@@ -33,28 +14,29 @@ function Header() {
         </div>
         <nav className="menu">
           <Link to="/raspored">
-            <button className="header-btn">Raspored</button>
+            <button className="header-btn">RASPORED</button>
           </Link>
           <Link to="/rezultati">
-            <button className="header-btn">Rezultati</button>
+            <button className="header-btn">REZULTATI</button>
           </Link>
           <Link to="/tabela">
-            <button className="header-btn">Tabela</button>
+            <button className="header-btn">TABELA</button>
           </Link>
           <Link to="/timovi">
-            <button className="header-btn">Timovi</button>
+            <button className="header-btn">TIMOVI</button>
           </Link>
           <Link to="/media">
-            <button className="header-btn">Media</button>
+            <button className="header-btn">MEDIA</button>
           </Link>
           <Link to="/onama">
-            <button className="header-btn">O nama</button>
+            <button className="header-btn">O NAMA</button>
           </Link>
           <Link to="/kontakt">
-            <button className="header-btn">Kontakt</button>
+            <button className="header-btn">KONTAKT</button>
           </Link>
         </nav>
       </header>
+      
     </>
   );
 }
