@@ -28,6 +28,7 @@ function App() {
   const [teams, setTeams] = useState([]);
   const [locations, setLocations] = useState([]);
   const [games, setGames] = useState([]);
+  const [seasons, setSeasons] = useState([]);
 
 
   useEffect(() => {
@@ -91,6 +92,25 @@ function App() {
     fetchGames();
   }, []);
 
+  useEffect(() => {
+    const fetchSeasons = async () => {
+      try {
+        const q = query(collection(db, 'seasons'));
+        const querySnap = await getDocs(q);
+        const seasons = [];
+
+        querySnap.forEach((doc) => {
+          return seasons.push({
+            id: doc.id,
+            name: doc.data().name,
+          });
+        });
+        setSeasons(seasons);
+      } catch (error) {}
+    };
+    fetchSeasons();
+  }, []);
+
   async function createNewTeam(newTeam) {
     //setActiveClassName(!activeClassName);
     const docRef = await addDoc(collection(db, 'teams'), newTeam);
@@ -116,7 +136,7 @@ function App() {
   }
 
   return (
-    <ApplicationProvider value={{teams, games, createNewTeam, locations, createNewGame, getLocationById, getTeamById}}>
+    <ApplicationProvider value={{teams, games, createNewTeam, locations, createNewGame, getLocationById, getTeamById, seasons}}>
       <Header />
       <LoginHeader />
       <Routes>

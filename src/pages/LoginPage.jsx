@@ -32,7 +32,7 @@ function LoginPage() {
       );
       
       if (userCredentials.user) {
-        navigate("/");
+        navigate("/raspored");
       }
     } catch (error) {
       console.log(error);

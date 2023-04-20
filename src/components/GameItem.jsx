@@ -16,7 +16,7 @@ function GameItem({ item }) {
   const { getLocationById, getTeamById } = useContext(applicationContext);
   return (
     <>
-      {!item.played && (
+      
         <>
           <span>
             <b>Datum:</b> <Moment format="LLLL">{item.date}</Moment>
@@ -39,7 +39,7 @@ function GameItem({ item }) {
           <br />
           <br />
         </>
-      )}
+      
     </>
   );
 }
