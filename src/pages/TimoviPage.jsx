@@ -9,6 +9,7 @@ import { useAuthStatus } from "../../src/hooks/useAuthStatus";
 function TimoviPage() {
   const { teams, createNewTeam } = useContext(applicationContext);
   const { loggedIn, checkingStatus } = useAuthStatus();
+  
   return (
     <div>
       <h2>Timovi</h2>

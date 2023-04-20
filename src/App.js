@@ -27,6 +27,7 @@ import { db } from './firebase.config';
 function App() {
   const [teams, setTeams] = useState([]);
   const [locations, setLocations] = useState([]);
+  const [games, setGames] = useState([]);
 
 
   useEffect(() => {
@@ -49,16 +50,73 @@ function App() {
     fetchTeams();
   }, []);
 
+  useEffect(() => {
+    const fetchLocations = async () => {
+      try {
+        const q = query(collection(db, 'locations'));
+        const querySnap = await getDocs(q);
+        const locations = [];
+
+        querySnap.forEach((doc) => {
+          return locations.push({
+            id: doc.id,
+            name: doc.data().name,
+          });
+        });
+        setLocations(locations);
+      } catch (error) {}
+    };
+    fetchLocations();
+  }, []);
+
+  useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const q = query(collection(db, 'games'));
+        const querySnap = await getDocs(q);
+        const games = [];
+        querySnap.forEach((doc) => {
+          return games.push({
+            id: doc.id,
+            date: doc.data().date.toDate(),
+            team1: doc.data().team1,
+            team2: doc.data().team2,
+            location: doc.data().location,
+            played: doc.data().played,
+          });
+        });
+        setGames(games);
+      } catch (error) {}
+    };
+    fetchGames();
+  }, []);
+
   async function createNewTeam(newTeam) {
     //setActiveClassName(!activeClassName);
     const docRef = await addDoc(collection(db, 'teams'), newTeam);
     newTeam.id = docRef.id;
     setTeams([...teams, newTeam]);
   }
-  
+
+  async function createNewGame(newGame) {
+    //setActiveClassName(!activeClassName);
+    const docRef = await addDoc(collection(db, 'games'), newGame);
+    newGame.id = docRef.id;
+    setGames([...games, newGame]);
+  }
+
+  function getLocationById(id) {
+    let location = locations.find((e) => e.id === id);
+    return location ? location.name : 'deleted location';
+  }
+
+  function getTeamById(id) {
+    let team = teams.find((e) => e.id === id);
+    return team ? team.name : 'deleted team';
+  }
 
   return (
-    <ApplicationProvider value={{teams, createNewTeam,}}>
+    <ApplicationProvider value={{teams, games, createNewTeam, locations, createNewGame, getLocationById, getTeamById}}>
       <Header />
       <LoginHeader />
       <Routes>
