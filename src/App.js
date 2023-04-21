@@ -13,6 +13,7 @@ import KontaktPage from "./pages/KontaktPage";
 import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
 import LoginHeader from "./components/LoginHeader/LoginHeader";
+import DeleteGameModal from "./components/DeleteGameModal";
 import {
   collection,
   getDocs,
@@ -21,20 +22,25 @@ import {
   doc,
   deleteDoc,
   updateDoc,
-} from 'firebase/firestore';
-import { db } from './firebase.config';
+} from "firebase/firestore";
+import { db } from "./firebase.config";
 
 function App() {
   const [teams, setTeams] = useState([]);
   const [locations, setLocations] = useState([]);
   const [games, setGames] = useState([]);
   const [seasons, setSeasons] = useState([]);
-
+  const [gameDate, setGameDate] = useState(new Date());
+  const [gameLocation, setGameLocation] = useState("");
+  const [gameTeam1, setgameTeam1] = useState("");
+  const [gameTeam2, setgameTeam2] = useState("");
+  const [gameSeason, setGameSeason] = useState(Math.max([...seasons]));
+  const [deleteGameModalData, setDeleteGameModalData] = useState(null);
 
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const q = query(collection(db, 'teams'));
+        const q = query(collection(db, "teams"));
         const querySnap = await getDocs(q);
         const teams = [];
 
@@ -54,7 +60,7 @@ function App() {
   useEffect(() => {
     const fetchLocations = async () => {
       try {
-        const q = query(collection(db, 'locations'));
+        const q = query(collection(db, "locations"));
         const querySnap = await getDocs(q);
         const locations = [];
 
@@ -73,7 +79,7 @@ function App() {
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const q = query(collection(db, 'games'));
+        const q = query(collection(db, "games"));
         const querySnap = await getDocs(q);
         const games = [];
         querySnap.forEach((doc) => {
@@ -95,7 +101,7 @@ function App() {
   useEffect(() => {
     const fetchSeasons = async () => {
       try {
-        const q = query(collection(db, 'seasons'));
+        const q = query(collection(db, "seasons"));
         const querySnap = await getDocs(q);
         const seasons = [];
 
@@ -113,30 +119,72 @@ function App() {
 
   async function createNewTeam(newTeam) {
     //setActiveClassName(!activeClassName);
-    const docRef = await addDoc(collection(db, 'teams'), newTeam);
+    const docRef = await addDoc(collection(db, "teams"), newTeam);
     newTeam.id = docRef.id;
     setTeams([...teams, newTeam]);
   }
 
   async function createNewGame(newGame) {
     //setActiveClassName(!activeClassName);
-    const docRef = await addDoc(collection(db, 'games'), newGame);
+    const docRef = await addDoc(collection(db, "games"), newGame);
     newGame.id = docRef.id;
     setGames([...games, newGame]);
   }
 
+  function updateGame(item) {
+    let differenceList = games.filter((e) => e.id !== item.id);
+    let newGame = [...differenceList, item];
+    setGames(newGame);
+    updateDoc(doc(db, "games", item.id), {
+      date: item.date,
+      location: item.location,
+      played: item.played,
+      season: item.season,
+      team1: item.team1,
+      team2: item.team2,
+    });
+  }
+
+  function deleteGame(item) {
+    setGames(games.filter((e) => e.id !== item.id));
+    deleteDoc(doc(db, "games", item.id));
+  }
+
   function getLocationById(id) {
     let location = locations.find((e) => e.id === id);
-    return location ? location.name : 'deleted location';
+    return location ? location.name : "deleted location";
   }
 
   function getTeamById(id) {
     let team = teams.find((e) => e.id === id);
-    return team ? team.name : 'deleted team';
+    return team ? team.name : "deleted team";
   }
 
   return (
-    <ApplicationProvider value={{teams, games, createNewTeam, locations, createNewGame, getLocationById, getTeamById, seasons}}>
+    <ApplicationProvider
+      value={{
+        teams,
+        games,
+        seasons,
+        locations,
+        gameDate,
+        gameLocation,
+        gameTeam1,
+        gameTeam2,
+        gameSeason,
+        createNewTeam,
+        createNewGame,
+        getLocationById,
+        getTeamById,
+        deleteGame,
+        setGameDate,
+        setGameLocation,
+        setgameTeam1,
+        setgameTeam2,
+        setGameSeason,
+        setDeleteGameModalData,
+      }}
+    >
       <Header />
       <LoginHeader />
       <Routes>
@@ -151,6 +199,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
       </Routes>
 
+      {deleteGameModalData && <DeleteGameModal item={deleteGameModalData} />}
       <Footer />
     </ApplicationProvider>
   );

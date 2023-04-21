@@ -6,15 +6,24 @@ import DatePickerSchedule from "../components/DatePickerSchedule";
 import GameItem from "../components/GameItem";
 
 function RasporedPage() {
-  const { teams, locations, games, createNewGame, seasons } =
-    useContext(applicationContext);
+  const {
+    teams,
+    locations,
+    games,
+    createNewGame,
+    seasons,
+    gameDate,
+    gameLocation,
+    gameTeam1,
+    gameTeam2,
+    gameSeason,
+    setGameDate,
+    setGameLocation,
+    setgameTeam1,
+    setgameTeam2,
+    setGameSeason,
+  } = useContext(applicationContext);
   const { loggedIn, checkingStatus } = useAuthStatus();
-  const [gameDate, setGameDate] = useState(new Date());
-  const [gameLocation, setGameLocation] = useState("");
-  const [gameTeam1, setgameTeam1] = useState("");
-  const [gameTeam2, setgameTeam2] = useState("");
-  const [gamePlayed, setGamePlayed] = useState(false);
-  const [gameSeason, setGameSeason] = useState(14);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +32,7 @@ function RasporedPage() {
       team1: gameTeam1,
       team2: gameTeam2,
       location: gameLocation,
-      played: gamePlayed,
+      played: false,
       season: gameSeason,
     };
     createNewGame(newGame);
@@ -125,12 +134,7 @@ function RasporedPage() {
               })}
             </select>
             <label htmlFor="season">Sezona:</label>
-            <select
-              defaultValue={Math.max([...seasons])}
-              required
-              name="season"
-              onChange={handleSeasonInput}
-            >
+            <select required name="season" onChange={handleSeasonInput}>
               {seasons.map((e) => {
                 return (
                   <option key={e.id} value={e.id}>
