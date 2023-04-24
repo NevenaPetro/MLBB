@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { applicationContext } from "../context/AplicationContext";
 import "../components/deleteGameModal.css";
 
-function DeteleGameModal({ item }) {
+function DeleteGameModal({ item }) {
   const { setDeleteGameModalData, deleteGame } = useContext(applicationContext);
   return (
     <div>
@@ -54,7 +54,7 @@ function DeteleGameModal({ item }) {
   );
 }
 
-export default DeteleGameModal;
+export default DeleteGameModal;
 
 /*function EmplModal({ item }) {
   const { setEmplModalData, updateEmployee } = useContext(applicationContext);

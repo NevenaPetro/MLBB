@@ -28,12 +28,11 @@ function GameItem({ item }) {
     setgameTeam1,
     setgameTeam2,
     setGameSeason,
-    setDeleteGameModalData
+    setDeleteGameModalData,
+    setEditGameModalData
   } = useContext(applicationContext);
+
   
-  const onSubmit = () => {
-    console.log(123);
-  };
   const handleLocationInput = (e) => {
     setGameLocation(e.target.value);
   };
@@ -56,14 +55,10 @@ function GameItem({ item }) {
           <b> Lokacija:</b> {getLocationById(item.location)}
         </span>
         <br />
-        <span>
-          <b> Tim 1: </b> {getTeamById(item.team1)}
-        </span>
+        <span>{getTeamById(item.team1)}</span>
         <span> : </span>
-        <span>
-           {getTeamById(item.team2)}<b> :Tim 2</b>
-        </span>
-<br />
+        <span>{getTeamById(item.team2)}</span>
+        <br />
         {loggedIn && (
           <>
             <button
@@ -75,11 +70,10 @@ function GameItem({ item }) {
             </button>
             <button
               onClick={() => {
-                 onSubmit();
-                
+                setEditGameModalData(item);
               }}
             >
-              IZMENI
+              Izmeni
             </button>
             <button>Završi utakmicu</button>
           </>

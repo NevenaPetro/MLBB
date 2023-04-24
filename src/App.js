@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
 import LoginHeader from "./components/LoginHeader/LoginHeader";
 import DeleteGameModal from "./components/DeleteGameModal";
+import EditGameModal from "./components/EditGameModal";
 import {
   collection,
   getDocs,
@@ -34,11 +35,12 @@ function App() {
   const [gameLocation, setGameLocation] = useState("");
   const [gameTeam1, setgameTeam1] = useState("");
   const [gameTeam2, setgameTeam2] = useState("");
-  const [gameSeason, setGameSeason] = useState(Math.max([...seasons]));
+  const [gameSeason, setGameSeason] = useState(15);
   const [deleteGameModalData, setDeleteGameModalData] = useState(null);
-
+  const [editGameModalData, setEditGameModalData] = useState(null);
+ 
   useEffect(() => {
-    const fetchTeams = async () => {
+      const fetchTeams = async () => {
       try {
         const q = query(collection(db, "teams"));
         const querySnap = await getDocs(q);
@@ -183,6 +185,8 @@ function App() {
         setgameTeam2,
         setGameSeason,
         setDeleteGameModalData,
+        setEditGameModalData,
+        updateGame
       }}
     >
       <Header />
@@ -200,6 +204,7 @@ function App() {
       </Routes>
 
       {deleteGameModalData && <DeleteGameModal item={deleteGameModalData} />}
+      {editGameModalData && <EditGameModal item={editGameModalData} />}
       <Footer />
     </ApplicationProvider>
   );

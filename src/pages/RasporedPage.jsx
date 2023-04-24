@@ -49,7 +49,7 @@ function RasporedPage() {
     setgameTeam2(e.target.value);
   };
   const handleSeasonInput = (e) => {
-    setGameSeason(e.target.value);
+    setGameSeason(+e.target.value);
   };
 
   return (
@@ -134,10 +134,10 @@ function RasporedPage() {
               })}
             </select>
             <label htmlFor="season">Sezona:</label>
-            <select required name="season" onChange={handleSeasonInput}>
+            <select required name="season" value={gameSeason} onChange={handleSeasonInput}>
               {seasons.map((e) => {
                 return (
-                  <option key={e.id} value={e.id}>
+                  <option key={e.id} value={e.name}>
                     {e.name}
                   </option>
                 );
