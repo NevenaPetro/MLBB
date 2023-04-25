@@ -14,37 +14,13 @@ function GameItem({ item }) {
   moment.locale("sr");
   const { loggedIn, checkingStatus } = useAuthStatus();
   const {
-    teams,
-    locations,
     getLocationById,
     getTeamById,
-    gameDate,
-    gameLocation,
-    gameTeam1,
-    gameTeam2,
-    gameSeason,
-    setGameDate,
-    setGameLocation,
-    setgameTeam1,
-    setgameTeam2,
-    setGameSeason,
+    getSeasonById,
     setDeleteGameModalData,
     setEditGameModalData
   } = useContext(applicationContext);
 
-  
-  const handleLocationInput = (e) => {
-    setGameLocation(e.target.value);
-  };
-  const handleTeam1Input = (e) => {
-    setgameTeam1(e.target.value);
-  };
-  const handleTeam2Input = (e) => {
-    setgameTeam2(e.target.value);
-  };
-  const handleSeasonInput = (e) => {
-    setGameSeason(e.target.value);
-  };
   return (
     <>
       <>
@@ -53,6 +29,9 @@ function GameItem({ item }) {
         </span>
         <span>
           <b> Lokacija:</b> {getLocationById(item.location)}
+        </span>
+        <span>
+          <b> Sezona:</b> {getSeasonById(item.season)}
         </span>
         <br />
         <span>{getTeamById(item.team1)}</span>

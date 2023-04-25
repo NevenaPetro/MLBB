@@ -15,6 +15,7 @@ import LoginPage from "./pages/LoginPage";
 import LoginHeader from "./components/LoginHeader/LoginHeader";
 import DeleteGameModal from "./components/DeleteGameModal";
 import EditGameModal from "./components/EditGameModal";
+import CreateGameModal from '../src/components/CreateGameModal'
 import {
   collection,
   getDocs,
@@ -38,6 +39,7 @@ function App() {
   const [gameSeason, setGameSeason] = useState(15);
   const [deleteGameModalData, setDeleteGameModalData] = useState(null);
   const [editGameModalData, setEditGameModalData] = useState(null);
+  const [createGameModalData, setCreateGameModalData] = useState(null);
  
   useEffect(() => {
       const fetchTeams = async () => {
@@ -162,6 +164,12 @@ function App() {
     return team ? team.name : "deleted team";
   }
 
+  function getSeasonById(id) {
+    let season = seasons.find((e) => e.id === id);
+    console.log(season)
+    return season ? season.num : "deleted season";
+  }
+
   return (
     <ApplicationProvider
       value={{
@@ -178,6 +186,7 @@ function App() {
         createNewGame,
         getLocationById,
         getTeamById,
+        getSeasonById,
         deleteGame,
         setGameDate,
         setGameLocation,
@@ -186,6 +195,7 @@ function App() {
         setGameSeason,
         setDeleteGameModalData,
         setEditGameModalData,
+        setCreateGameModalData,
         updateGame
       }}
     >
@@ -205,6 +215,7 @@ function App() {
 
       {deleteGameModalData && <DeleteGameModal item={deleteGameModalData} />}
       {editGameModalData && <EditGameModal item={editGameModalData} />}
+      {createGameModalData && <CreateGameModal />}
       <Footer />
     </ApplicationProvider>
   );
