@@ -133,9 +133,9 @@ function CreateGameModal() {
               </select>
               <label htmlFor="season">Sezona:</label>
               <select
+                defaultValue={""}
                 required
                 name="season"
-                defaultValue={15}
                 onChange={handleSeasonInput}
               >
                 <option value="" disabled hidden>
@@ -144,7 +144,7 @@ function CreateGameModal() {
                 {seasons.map((e) => {
                   return (
                     <option key={e.id} value={e.id}>
-                      {e.num}
+                      {e.name}
                     </option>
                   );
                 })}

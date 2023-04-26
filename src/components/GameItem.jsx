@@ -18,9 +18,9 @@ function GameItem({ item }) {
     getTeamById,
     getSeasonById,
     setDeleteGameModalData,
-    setEditGameModalData
+    setEditGameModalData,
   } = useContext(applicationContext);
-
+  
   return (
     <>
       <>

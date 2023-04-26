@@ -36,7 +36,7 @@ function App() {
   const [gameLocation, setGameLocation] = useState("");
   const [gameTeam1, setgameTeam1] = useState("");
   const [gameTeam2, setgameTeam2] = useState("");
-  const [gameSeason, setGameSeason] = useState(15);
+  const [gameSeason, setGameSeason] = useState("");
   const [deleteGameModalData, setDeleteGameModalData] = useState(null);
   const [editGameModalData, setEditGameModalData] = useState(null);
   const [createGameModalData, setCreateGameModalData] = useState(null);
@@ -93,6 +93,7 @@ function App() {
             team1: doc.data().team1,
             team2: doc.data().team2,
             location: doc.data().location,
+            season: doc.data().season,
             played: doc.data().played,
           });
         });
@@ -166,8 +167,7 @@ function App() {
 
   function getSeasonById(id) {
     let season = seasons.find((e) => e.id === id);
-    console.log(season)
-    return season ? season.num : "deleted season";
+    return season ? season.name : "deleted season";
   }
 
   return (

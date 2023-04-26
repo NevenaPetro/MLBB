@@ -11,8 +11,11 @@ function EditGameModal({ item }) {
     seasons,
     setEditGameModalData,
     updateGame,
-    gameDate,
+    
     setGameDate,
+    getLocationById,
+    getTeamById,
+    getSeasonById,
     setGameLocation,
     setgameTeam1,
     setgameTeam2,
@@ -23,16 +26,15 @@ function EditGameModal({ item }) {
   const [updatedSeason, setUpdatedSeason] = useState(item.season);
   const [updatedLocation, setUpdatedLocation] = useState(item.location);
   const [updatedDate, setUpdatedDate] = useState(item.date);
-  const [updatedPlayed, setUpdatedPlayed] = useState(item.played);
   
+
   const onSubmit = (e) => {
-    console.log(updatedSeason, item.season)
     e.preventDefault();
     const updatedGame = {
       id: item.id,
       date: updatedDate,
       location: updatedLocation,
-      played: updatedPlayed,
+      played: item.played,
       season: updatedSeason,
       team1: updatedTeam1,
       team2: updatedTeam2,
@@ -52,6 +54,7 @@ function EditGameModal({ item }) {
   const handleSeasonInput = (e) => {
     e.target.value && setUpdatedSeason(e.target.value);
   };
+  
 
   return (
     <div>
@@ -78,18 +81,16 @@ function EditGameModal({ item }) {
             <form onSubmit={onSubmit}>
               <p>Datum i vreme:</p>
               <DatePickerSchedule
-                startDate={gameDate}
+             
+                startDate={updatedDate}
                 setStartDate={setGameDate}
               />
               <label htmlFor="location">Lokacija:</label>
               <select
-                defaultValue={""}
+                defaultValue={updatedLocation}
                 name="location"
                 onChange={handleLocationInput}
-              >
-                <option value="" disabled hidden>
-                  Odaberi...
-                </option>
+              >            
                 {locations.map((e) => {
                   return (
                     <option key={e.id} value={e.id}>
@@ -101,14 +102,11 @@ function EditGameModal({ item }) {
               <br />
               <label htmlFor="team1">Tim 1:</label>
               <select
-                defaultValue={""}
-                
+                defaultValue={updatedTeam1}
                 name="team1"
                 onChange={handleTeam1Input}
               >
-                <option value="" disabled hidden>
-                  Odaberi...
-                </option>
+                
                 {teams.map((e) => {
                   return (
                     <option key={e.id} value={e.id}>
@@ -120,14 +118,11 @@ function EditGameModal({ item }) {
               <br />
               <label htmlFor="team2">Tim 2:</label>
               <select
-                defaultValue={""}
-                
+                defaultValue={updatedTeam2}
                 name="team2"
                 onChange={handleTeam2Input}
               >
-                <option value="" disabled hidden>
-                  Odaberi...
-                </option>
+               
                 {teams.map((e) => {
                   return (
                     <option key={e.id} value={e.id}>
@@ -137,11 +132,15 @@ function EditGameModal({ item }) {
                 })}
               </select>
               <label htmlFor="season">Sezona:</label>
-              <select  name="season" onChange={handleSeasonInput}>
+              <select
+                name="season"
+                defaultValue={updatedSeason}
+                onChange={handleSeasonInput}
+              >
                 {seasons.map((e) => {
                   return (
                     <option key={e.id} value={e.id}>
-                      {e.num}
+                      {e.name}
                     </option>
                   );
                 })}
