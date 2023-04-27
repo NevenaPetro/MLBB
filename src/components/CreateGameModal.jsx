@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useContext } from "react";
 import { applicationContext } from "../../src/context/AplicationContext";
-import DatePickerSchedule from "../components/DatePickerSchedule";
+import { DateTimePicker } from "@mui/x-date-pickers";
+import { Stack, TextField } from "@mui/material";
+import { Timestamp } from "@firebase/firestore";
 
 function CreateGameModal() {
   const {
@@ -21,6 +23,7 @@ function CreateGameModal() {
     setGameSeason,
     setCreateGameModalData,
   } = useContext(applicationContext);
+  console.log(gameDate)
   const onSubmit = (e) => {
     e.preventDefault();
     const newGame = {
@@ -33,6 +36,7 @@ function CreateGameModal() {
     };
     createNewGame(newGame);
     setCreateGameModalData(null);
+    console.log(gameDate)
     //setActiveClassNameTask(!activeClassNameTask);
   };
   const handleLocationInput = (e) => {
@@ -69,12 +73,19 @@ function CreateGameModal() {
             >
               X
             </button>
+
             <form onSubmit={onSubmit}>
               <p>Datum i vreme:</p>
-              <DatePickerSchedule
-                startDate={gameDate}
-                setStartDate={setGameDate}
-              />
+              <Stack>
+                <DateTimePicker
+                  label="Date Time Picker"
+                  renderInput={(params) => <TextField {...params} />}
+                  value={gameDate}
+                  onChange={(newValue) => {
+                    setGameDate(newValue);
+                  }}
+                />
+              </Stack>
               <label htmlFor="location">Lokacija:</label>
               <select
                 defaultValue={""}

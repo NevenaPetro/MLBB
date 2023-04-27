@@ -26,6 +26,8 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "./firebase.config";
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 
 function App() {
   const [teams, setTeams] = useState([]);
@@ -87,6 +89,7 @@ function App() {
         const querySnap = await getDocs(q);
         const games = [];
         querySnap.forEach((doc) => {
+          console.log(doc.data().date.toDate())
           return games.push({
             id: doc.id,
             date: doc.data().date.toDate(),
@@ -198,7 +201,7 @@ function App() {
         setCreateGameModalData,
         updateGame
       }}
-    >
+    ><LocalizationProvider dateAdapter={AdapterMoment}>
       <Header />
       <LoginHeader />
       <Routes>
@@ -217,6 +220,7 @@ function App() {
       {editGameModalData && <EditGameModal item={editGameModalData} />}
       {createGameModalData && <CreateGameModal />}
       <Footer />
+      </LocalizationProvider>
     </ApplicationProvider>
   );
 }
