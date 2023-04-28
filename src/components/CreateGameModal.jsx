@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { applicationContext } from "../../src/context/AplicationContext";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { Stack, TextField } from "@mui/material";
-import { Timestamp } from "@firebase/firestore";
+import moment from "moment";
 
 function CreateGameModal() {
   const {
@@ -23,7 +23,6 @@ function CreateGameModal() {
     setGameSeason,
     setCreateGameModalData,
   } = useContext(applicationContext);
-  console.log(gameDate)
   const onSubmit = (e) => {
     e.preventDefault();
     const newGame = {
@@ -36,7 +35,7 @@ function CreateGameModal() {
     };
     createNewGame(newGame);
     setCreateGameModalData(null);
-    console.log(gameDate)
+
     //setActiveClassNameTask(!activeClassNameTask);
   };
   const handleLocationInput = (e) => {
@@ -76,16 +75,16 @@ function CreateGameModal() {
 
             <form onSubmit={onSubmit}>
               <p>Datum i vreme:</p>
-              <Stack>
-                <DateTimePicker
-                  label="Date Time Picker"
-                  renderInput={(params) => <TextField {...params} />}
-                  value={gameDate}
-                  onChange={(newValue) => {
-                    setGameDate(newValue);
-                  }}
-                />
-              </Stack>
+                  <Stack>
+                    <DateTimePicker
+                      
+                      renderInput={(params) => <TextField {...params} />}
+                      defaultValue={moment(gameDate)}
+                      onChange={(newValue) => {
+                        setGameDate(newValue.toDate());
+                      }}
+                    />
+                  </Stack>
               <label htmlFor="location">Lokacija:</label>
               <select
                 defaultValue={""}
@@ -170,7 +169,7 @@ function CreateGameModal() {
                 setCreateGameModalData(null);
               }}
             >
-              Cancel
+              Odustani
             </button>
           </div>
         </div>

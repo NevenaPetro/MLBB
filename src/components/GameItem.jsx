@@ -19,13 +19,13 @@ function GameItem({ item }) {
     getSeasonById,
     setDeleteGameModalData,
     setEditGameModalData,
+    setFinishGameModalData
   } = useContext(applicationContext);
-  
   return (
     <>
       <>
         <span>
-          <b>Datum:</b> <Moment format="LLLL">{item.date}</Moment>h
+          <b>Datum i vreme:</b> <Moment format="L LT">{item.date}</Moment>h
         </span>
         <span>
           <b> Lokacija:</b> {getLocationById(item.location)}
@@ -54,7 +54,9 @@ function GameItem({ item }) {
             >
               Izmeni
             </button>
-            <button>Završi utakmicu</button>
+            <button onClick={() => {
+                setFinishGameModalData(item);
+              }}>Završi utakmicu</button>
           </>
         )}
         <br />

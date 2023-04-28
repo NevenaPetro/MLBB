@@ -15,7 +15,8 @@ import LoginPage from "./pages/LoginPage";
 import LoginHeader from "./components/LoginHeader/LoginHeader";
 import DeleteGameModal from "./components/DeleteGameModal";
 import EditGameModal from "./components/EditGameModal";
-import CreateGameModal from '../src/components/CreateGameModal'
+import CreateGameModal from "../src/components/CreateGameModal";
+import FinishGameModal from "../src/components/FinishGameModal";
 import {
   collection,
   getDocs,
@@ -26,8 +27,9 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "./firebase.config";
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import "moment/locale/sr";
 
 function App() {
   const [teams, setTeams] = useState([]);
@@ -42,9 +44,10 @@ function App() {
   const [deleteGameModalData, setDeleteGameModalData] = useState(null);
   const [editGameModalData, setEditGameModalData] = useState(null);
   const [createGameModalData, setCreateGameModalData] = useState(null);
- 
+  const [finishGameModalData, setFinishGameModalData] = useState(null);
+
   useEffect(() => {
-      const fetchTeams = async () => {
+    const fetchTeams = async () => {
       try {
         const q = query(collection(db, "teams"));
         const querySnap = await getDocs(q);
@@ -89,7 +92,6 @@ function App() {
         const querySnap = await getDocs(q);
         const games = [];
         querySnap.forEach((doc) => {
-          console.log(doc.data().date.toDate())
           return games.push({
             id: doc.id,
             date: doc.data().date.toDate(),
@@ -150,6 +152,8 @@ function App() {
       season: item.season,
       team1: item.team1,
       team2: item.team2,
+      scoreteam1: item.scoreteam1,
+      scoreteam2: item.scoreteam2,
     });
   }
 
@@ -199,27 +203,31 @@ function App() {
         setDeleteGameModalData,
         setEditGameModalData,
         setCreateGameModalData,
-        updateGame
+        setFinishGameModalData,
+        updateGame,
       }}
-    ><LocalizationProvider dateAdapter={AdapterMoment}>
-      <Header />
-      <LoginHeader />
-      <Routes>
-        <Route exact path="/" element={<HomePage />} />
-        <Route path="/raspored" element={<RasporedPage />} />
-        <Route path="/rezultati" element={<RezultatiPage />} />
-        <Route path="/tabela" element={<TabelaPage />} />
-        <Route path="/timovi" element={<TimoviPage />} />
-        <Route path="/media" element={<MediaPage />} />
-        <Route path="/onama" element={<ONamaPage />} />
-        <Route path="/kontakt" element={<KontaktPage />} />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
+    >
+      <LocalizationProvider dateAdapter={AdapterMoment} adapterLocale="sr">
+        <Header />
+        <LoginHeader />
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="/raspored" element={<RasporedPage />} />
+          <Route path="/rezultati" element={<RezultatiPage />} />
+          <Route path="/tabela" element={<TabelaPage />} />
+          <Route path="/timovi" element={<TimoviPage />} />
+          <Route path="/media" element={<MediaPage />} />
+          <Route path="/onama" element={<ONamaPage />} />
+          <Route path="/kontakt" element={<KontaktPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
 
-      {deleteGameModalData && <DeleteGameModal item={deleteGameModalData} />}
-      {editGameModalData && <EditGameModal item={editGameModalData} />}
-      {createGameModalData && <CreateGameModal />}
-      <Footer />
+        {deleteGameModalData && <DeleteGameModal item={deleteGameModalData} />}
+        {editGameModalData && <EditGameModal item={editGameModalData} />}
+        {createGameModalData && <CreateGameModal />}
+        {finishGameModalData && <FinishGameModal item={finishGameModalData} />}
+
+        <Footer />
       </LocalizationProvider>
     </ApplicationProvider>
   );

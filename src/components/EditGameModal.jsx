@@ -1,8 +1,10 @@
 import React from "react";
 import { useState, useContext } from "react";
 import { applicationContext } from "../context/AplicationContext";
-import DatePickerSchedule from "../components/DatePickerSchedule";
+import { DateTimePicker } from "@mui/x-date-pickers";
 import "../components/deleteGameModal.css";
+import { Stack, TextField } from "@mui/material";
+import moment from "moment";
 
 function EditGameModal({ item }) {
   const {
@@ -11,7 +13,6 @@ function EditGameModal({ item }) {
     seasons,
     setEditGameModalData,
     updateGame,
-    
     setGameDate,
     getLocationById,
     getTeamById,
@@ -26,7 +27,6 @@ function EditGameModal({ item }) {
   const [updatedSeason, setUpdatedSeason] = useState(item.season);
   const [updatedLocation, setUpdatedLocation] = useState(item.location);
   const [updatedDate, setUpdatedDate] = useState(item.date);
-  
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +54,6 @@ function EditGameModal({ item }) {
   const handleSeasonInput = (e) => {
     e.target.value && setUpdatedSeason(e.target.value);
   };
-  
 
   return (
     <div>
@@ -80,17 +79,21 @@ function EditGameModal({ item }) {
             </button>
             <form onSubmit={onSubmit}>
               <p>Datum i vreme:</p>
-              <DatePickerSchedule
-             
-                startDate={updatedDate}
-                setStartDate={setGameDate}
-              />
+              <Stack>
+                <DateTimePicker
+                  renderInput={(params) => <TextField {...params} />}
+                  defaultValue={moment(updatedDate)}
+                  onChange={(newValue) => {
+                    setUpdatedDate(newValue.toDate());
+                  }}
+                />
+              </Stack>
               <label htmlFor="location">Lokacija:</label>
               <select
                 defaultValue={updatedLocation}
                 name="location"
                 onChange={handleLocationInput}
-              >            
+              >
                 {locations.map((e) => {
                   return (
                     <option key={e.id} value={e.id}>
@@ -106,7 +109,6 @@ function EditGameModal({ item }) {
                 name="team1"
                 onChange={handleTeam1Input}
               >
-                
                 {teams.map((e) => {
                   return (
                     <option key={e.id} value={e.id}>
@@ -122,7 +124,6 @@ function EditGameModal({ item }) {
                 name="team2"
                 onChange={handleTeam2Input}
               >
-               
                 {teams.map((e) => {
                   return (
                     <option key={e.id} value={e.id}>
@@ -146,7 +147,7 @@ function EditGameModal({ item }) {
                 })}
               </select>
               <button className="btn-md" type="submit">
-                Update
+                OK
               </button>
             </form>
 
@@ -157,7 +158,7 @@ function EditGameModal({ item }) {
                 setEditGameModalData(null);
               }}
             >
-              Cancel
+              Odustani
             </button>
           </div>
         </div>
