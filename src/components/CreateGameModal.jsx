@@ -27,11 +27,15 @@ function CreateGameModal() {
     e.preventDefault();
     const newGame = {
       date: gameDate,
-      team1: gameTeam1,
-      team2: gameTeam2,
       location: gameLocation,
       played: false,
       season: gameSeason,
+      team1: gameTeam1,
+      team2: gameTeam2,
+      scoreTeam1: 0,
+      scoreTeam2: 0,
+      presenceTeam1: false,
+      presenceTeam2: false,
     };
     createNewGame(newGame);
     setCreateGameModalData(null);

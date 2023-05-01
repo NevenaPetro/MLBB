@@ -34,10 +34,14 @@ function EditGameModal({ item }) {
       id: item.id,
       date: updatedDate,
       location: updatedLocation,
-      played: item.played,
       season: updatedSeason,
+      played: item.played,
       team1: updatedTeam1,
       team2: updatedTeam2,
+      scoreTeam1: item.scoreTeam1,
+      scoreTeam2: item.scoreTeam2,
+      presenceTeam1: item.presenceTeam1,
+      presenceTeam2: item.presenceTeam2,
     };
     updateGame(updatedGame);
     setEditGameModalData(null);

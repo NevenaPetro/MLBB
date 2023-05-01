@@ -17,25 +17,63 @@ function FinishGameModal({ item }) {
     setgameTeam2,
     setGameSeason,
   } = useContext(applicationContext);
+
   const [team1Score, setTeam1Score] = useState(0);
   const [team2Score, setTeam2Score] = useState(0);
+  const [team1Attended, setTeam1Attended] = useState(true);
+  const [team2Attended, setTeam2Attended] = useState(true);
+
+  /*if (team1Attended && team2Attended) {
+    if (team1Score > team2Score) {
+      pointsTeam1 = 2;
+      pointsTeam2 = 1;
+    } else {
+      pointsTeam1 = 1;
+      pointsTeam2 = 2;
+    }
+  } else {
+    if (team1Attended) {
+      pointsTeam1 = 2;
+      pointsTeam2 = 0;
+    } else {
+      pointsTeam1 = 0;
+      pointsTeam2 = 2;
+    }
+  }*/
+
   const onSubmit = (e) => {
     e.preventDefault();
     const updatedGame = {
       id: item.id,
       date: item.date,
       location: item.location,
-      played: item.played,
+      played: true,
       season: item.season,
       team1: item.team1,
       team2: item.team2,
-      scoreteam1: team1Score,
-      scoreteam2: team2Score,
+      scoreTeam1: team1Score,
+      scoreTeam2: team2Score,
+      presenceTeam1: team1Attended,
+      presenceTeam2: team2Attended,
     };
     updateGame(updatedGame);
     setFinishGameModalData(null);
   };
-  
+
+  const handleChange1 = () => {
+    setTeam1Attended(!team1Attended);
+  };
+  const handleChange2 = () => {
+    setTeam2Attended(!team2Attended);
+  };
+  const handleTeam1ScoreChange = (e) => {
+    e.target.value && setTeam1Score(+e.target.value);
+    console.log(typeof team1Score)
+  };
+  const handleTeam2ScoreChange = (e) => {
+    e.target.value && setTeam2Score(+e.target.value);
+  };
+
   return (
     <>
       <div
@@ -59,13 +97,39 @@ function FinishGameModal({ item }) {
           </button>
           <form onSubmit={onSubmit}>
             <label htmlFor="team1">{getTeamById(item.team1)}</label>
-            <input type="number" name='team1'/>
-            <input type="number" name='team2'/>
+            <label htmlFor="attended1">
+              <input
+                type="checkbox"
+                name="attended1"
+                checked={team1Attended}
+                onChange={handleChange1}
+              />
+              Prisustvovali?
+            </label>
+            <input
+              type="number"
+              name="team1"
+              onChange={handleTeam1ScoreChange}
+            />
+            <input
+              type="number"
+              name="team2"
+              onChange={handleTeam2ScoreChange}
+            />{" "}
+            <label htmlFor="attended2">
+              <input
+                type="checkbox"
+                name="attended2"
+                checked={team2Attended}
+                onChange={handleChange2}
+              />
+              Prisustvovali?
+            </label>
             <label htmlFor="team2">{getTeamById(item.team2)}</label>
             <br />
             <button className="btn-md" type="submit">
-                OK
-              </button>
+              OK
+            </button>
           </form>
           <button
             className="btn-md"

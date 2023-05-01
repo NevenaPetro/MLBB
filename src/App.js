@@ -57,7 +57,6 @@ function App() {
           return teams.push({
             id: doc.id,
             name: doc.data().name,
-            group: doc.data().group,
           });
         });
         setTeams(teams);
@@ -95,11 +94,15 @@ function App() {
           return games.push({
             id: doc.id,
             date: doc.data().date.toDate(),
-            team1: doc.data().team1,
-            team2: doc.data().team2,
             location: doc.data().location,
             season: doc.data().season,
             played: doc.data().played,
+            team1: doc.data().team1,
+            team2: doc.data().team2,
+            scoreTeam1: doc.data().scoreTeam1,
+            scoreTeam2: doc.data().scoreTeam2,
+            presenceTeam1: doc.data().presenceTeam1,
+            presenceTeam2: doc.data().presenceTeam2,
           });
         });
         setGames(games);
@@ -152,8 +155,10 @@ function App() {
       season: item.season,
       team1: item.team1,
       team2: item.team2,
-      scoreteam1: item.scoreteam1,
-      scoreteam2: item.scoreteam2,
+      scoreTeam1: item.scoreTeam1,
+      scoreTeam2: item.scoreTeam2,
+      presenceTeam1: item.presenceTeam1,
+      presenceTeam2: item.presenceTeam2,
     });
   }
 

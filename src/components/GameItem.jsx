@@ -19,7 +19,7 @@ function GameItem({ item }) {
     getSeasonById,
     setDeleteGameModalData,
     setEditGameModalData,
-    setFinishGameModalData
+    setFinishGameModalData,
   } = useContext(applicationContext);
   return (
     <>
@@ -34,9 +34,11 @@ function GameItem({ item }) {
           <b> Sezona:</b> {getSeasonById(item.season)}
         </span>
         <br />
-        <span>{getTeamById(item.team1)}</span>
-        <span> : </span>
-        <span>{getTeamById(item.team2)}</span>
+        <span>{getTeamById(item.team1)} </span>
+        {item.played && (<span> <b>{item.scoreTeam1}</b></span>)}
+        <span>  :  </span>
+        {item.played && (<span><b>{item.scoreTeam2}</b> </span>)}
+        <span> {getTeamById(item.team2)}</span>
         <br />
         {loggedIn && (
           <>
@@ -54,9 +56,15 @@ function GameItem({ item }) {
             >
               Izmeni
             </button>
-            <button onClick={() => {
-                setFinishGameModalData(item);
-              }}>Završi utakmicu</button>
+            {!item.played && (
+              <button
+                onClick={() => {
+                  setFinishGameModalData(item);
+                }}
+              >
+                Završi utakmicu
+              </button>
+            )}
           </>
         )}
         <br />
