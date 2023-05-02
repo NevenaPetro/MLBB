@@ -55,130 +55,96 @@ function CreateGameModal() {
     setGameSeason(e.target.value);
   };
   return (
-    <div>
-      <>
-        <div
-          className="modal-bg"
-          onClick={() => {
-            setCreateGameModalData(null);
-          }}
-        >
-          <div
-            className="modal"
-            onClick={(event) => {
-              event.stopPropagation();
+    <>
+      <form onSubmit={onSubmit}>
+        <p>Datum i vreme:</p>
+        <Stack>
+          <DateTimePicker
+            renderInput={(params) => <TextField {...params} />}
+            defaultValue={moment(gameDate)}
+            onChange={(newValue) => {
+              setGameDate(newValue.toDate());
             }}
-          >
-            <button
-              className={"close-btn"}
-              type={"button"}
-              onClick={() => setCreateGameModalData(null)}
-            >
-              X
-            </button>
-
-            <form onSubmit={onSubmit}>
-              <p>Datum i vreme:</p>
-                  <Stack>
-                    <DateTimePicker
-                      
-                      renderInput={(params) => <TextField {...params} />}
-                      defaultValue={moment(gameDate)}
-                      onChange={(newValue) => {
-                        setGameDate(newValue.toDate());
-                      }}
-                    />
-                  </Stack>
-              <label htmlFor="location">Lokacija:</label>
-              <select
-                defaultValue={""}
-                required
-                name="location"
-                onChange={handleLocationInput}
-              >
-                <option value="" disabled hidden>
-                  Odaberi...
-                </option>
-                {locations.map((e) => {
-                  return (
-                    <option key={e.id} value={e.id}>
-                      {e.name}
-                    </option>
-                  );
-                })}
-              </select>
-              <br />
-              <label htmlFor="team1">Tim 1:</label>
-              <select
-                defaultValue={""}
-                required
-                name="team1"
-                onChange={handleTeam1Input}
-              >
-                <option value="" disabled hidden>
-                  Odaberi...
-                </option>
-                {teams.map((e) => {
-                  return (
-                    <option key={e.id} value={e.id}>
-                      {e.name}
-                    </option>
-                  );
-                })}
-              </select>
-              <br />
-              <label htmlFor="team2">Tim 2:</label>
-              <select
-                defaultValue={""}
-                required
-                name="team2"
-                onChange={handleTeam2Input}
-              >
-                <option value="" disabled hidden>
-                  Odaberi...
-                </option>
-                {teams.map((e) => {
-                  return (
-                    <option key={e.id} value={e.id}>
-                      {e.name}
-                    </option>
-                  );
-                })}
-              </select>
-              <label htmlFor="season">Sezona:</label>
-              <select
-                defaultValue={""}
-                required
-                name="season"
-                onChange={handleSeasonInput}
-              >
-                <option value="" disabled hidden>
-                  Odaberi...
-                </option>
-                {seasons.map((e) => {
-                  return (
-                    <option key={e.id} value={e.id}>
-                      {e.name}
-                    </option>
-                  );
-                })}
-              </select>
-              <br />
-              <button type="submit">Kreiraj</button>
-            </form>
-            <button
-              className="btn-md"
-              type="button"
-              onClick={() => {
-                setCreateGameModalData(null);
-              }}
-            >
-              Odustani
-            </button>
-          </div>
-        </div>
-      </>
-    </div>
+          />
+        </Stack>
+        <label htmlFor="location">Lokacija:</label>
+        <select
+          defaultValue={""}
+          required
+          name="location"
+          onChange={handleLocationInput}
+        >
+          <option value="" disabled hidden>
+            Odaberi...
+          </option>
+          {locations.map((e) => {
+            return (
+              <option key={e.id} value={e.id}>
+                {e.name}
+              </option>
+            );
+          })}
+        </select>
+        <br />
+        <label htmlFor="team1">Tim 1:</label>
+        <select
+          defaultValue={""}
+          required
+          name="team1"
+          onChange={handleTeam1Input}
+        >
+          <option value="" disabled hidden>
+            Odaberi...
+          </option>
+          {teams.map((e) => {
+            return (
+              <option key={e.id} value={e.id}>
+                {e.name}
+              </option>
+            );
+          })}
+        </select>
+        <br />
+        <label htmlFor="team2">Tim 2:</label>
+        <select
+          defaultValue={""}
+          required
+          name="team2"
+          onChange={handleTeam2Input}
+        >
+          <option value="" disabled hidden>
+            Odaberi...
+          </option>
+          {teams.map((e) => {
+            return (
+              <option key={e.id} value={e.id}>
+                {e.name}
+              </option>
+            );
+          })}
+        </select>
+        <label htmlFor="season">Sezona:</label>
+        <select
+          defaultValue={""}
+          required
+          name="season"
+          onChange={handleSeasonInput}
+        >
+          <option value="" disabled hidden>
+            Odaberi...
+          </option>
+          {seasons.map((e) => {
+            return (
+              <option key={e.id} value={e.id}>
+                {e.name}
+              </option>
+            );
+          })}
+        </select>
+        <br />
+        <button type="submit">Kreiraj</button>
+      </form>
+    </>
   );
 }
 

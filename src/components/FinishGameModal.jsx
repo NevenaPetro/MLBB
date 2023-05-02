@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { applicationContext } from "../../src/context/AplicationContext";
-import Modal from "./Modal";
 
 function FinishGameModal({ item }) {
   const {
@@ -99,15 +98,6 @@ function FinishGameModal({ item }) {
           OK
         </button>
       </form>
-      <button
-        className="btn-md"
-        type="button"
-        onClick={() => {
-          setFinishGameModalData(null);
-        }}
-      >
-        Odustani
-      </button>
     </>
   );
 }

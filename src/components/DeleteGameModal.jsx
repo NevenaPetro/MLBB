@@ -1,7 +1,7 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { applicationContext } from "../context/AplicationContext";
-import "../components/deleteGameModal.css";
+
 
 function DeleteGameModal({ item }) {
   const { setDeleteGameModalData, deleteGame } = useContext(applicationContext);
@@ -15,17 +15,9 @@ function DeleteGameModal({ item }) {
           setDeleteGameModalData(null);
         }}
       >
-        Delete?
+        Obriši
       </button>
-      <button
-        className="btn-md"
-        type="button"
-        onClick={() => {
-          setDeleteGameModalData(null);
-        }}
-      >
-        Cancel
-      </button>
+  
     </>
   );
 }

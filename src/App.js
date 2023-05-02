@@ -5,7 +5,7 @@ import Header from "./components/Header/Header";
 import HomePage from "./pages/HomePage";
 import ONamaPage from "./pages/ONamaPage";
 import RasporedPage from "./pages/RasporedPage";
-import TabelaPage from "./pages/TabelaPage";
+import TablePage from "./pages/TablePage";
 import TimoviPage from "./pages/TimoviPage";
 import RezultatiPage from "./pages/RezultatiPage";
 import MediaPage from "./pages/MediaPage";
@@ -17,7 +17,7 @@ import DeleteGameModal from "./components/DeleteGameModal";
 import EditGameModal from "./components/EditGameModal";
 import CreateGameModal from "../src/components/CreateGameModal";
 import FinishGameModal from "../src/components/FinishGameModal";
-import Modal from "./components/Modal";
+import Modal from "./components/Modal/Modal";
 import {
   collection,
   getDocs,
@@ -220,7 +220,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route path="/raspored" element={<RasporedPage />} />
           <Route path="/rezultati" element={<RezultatiPage />} />
-          <Route path="/tabela" element={<TabelaPage />} />
+          <Route path="/tabela" element={<TablePage />} />
           <Route path="/timovi" element={<TimoviPage />} />
           <Route path="/media" element={<MediaPage />} />
           <Route path="/onama" element={<ONamaPage />} />
@@ -230,33 +230,28 @@ function App() {
 
         {deleteGameModalData && (
           <Modal
-            
             setModalData={setDeleteGameModalData}
-            children={<DeleteGameModal item={deleteGameModalData}/>}
+            children={<DeleteGameModal item={deleteGameModalData} />}
           />
         )}
         {editGameModalData && (
           <Modal
-            
             setModalData={setEditGameModalData}
-            children={<EditGameModal item={editGameModalData}/>}
+            children={<EditGameModal item={editGameModalData} />}
           />
         )}
         {createGameModalData && (
           <Modal
-            
             setModalData={setCreateGameModalData}
-            children={<CreateGameModal item={createGameModalData}/>}
+            children={<CreateGameModal item={1} />}
           />
         )}
         {finishGameModalData && (
           <Modal
-            
             setModalData={setFinishGameModalData}
-            children={<FinishGameModal item={finishGameModalData}/>}
+            children={<FinishGameModal item={finishGameModalData} />}
           />
         )}
-
         <Footer />
       </LocalizationProvider>
     </ApplicationProvider>

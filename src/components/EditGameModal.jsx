@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useContext } from "react";
 import { applicationContext } from "../context/AplicationContext";
 import { DateTimePicker } from "@mui/x-date-pickers";
-import "../components/deleteGameModal.css";
 import { Stack, TextField } from "@mui/material";
 import moment from "moment";
 

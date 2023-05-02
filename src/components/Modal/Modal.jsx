@@ -1,7 +1,19 @@
 import React from "react";
+import { useEffect } from "react";
+import '../Modal/modal.css'
 
 function Modal({ setModalData, children }) {
-
+    function handleEsc(event) {
+        if (event.keyCode === 27) {
+            setModalData(null);
+        }
+      }
+      useEffect(() => {
+        window.addEventListener("keydown", handleEsc);
+        return () => {
+          window.removeEventListener("keydown", handleEsc);
+        };
+      }, []);
   return (
     <>
       <div
