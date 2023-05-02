@@ -6,27 +6,28 @@ import "../components/deleteGameModal.css";
 import { Stack, TextField } from "@mui/material";
 import moment from "moment";
 
-function EditGameModal({ item }) {
+function EditGameModal({item}) {
   const {
     locations,
     teams,
     seasons,
     setEditGameModalData,
     updateGame,
-    setGameDate,
-    getLocationById,
-    getTeamById,
-    getSeasonById,
-    setGameLocation,
-    setgameTeam1,
-    setgameTeam2,
-    setGameSeason,
+    
   } = useContext(applicationContext);
   const [updatedTeam1, setUpdatedTeam1] = useState(item.team1);
   const [updatedTeam2, setUpdatedTeam2] = useState(item.team2);
   const [updatedSeason, setUpdatedSeason] = useState(item.season);
   const [updatedLocation, setUpdatedLocation] = useState(item.location);
   const [updatedDate, setUpdatedDate] = useState(item.date);
+  const [updatedTeam1Score, setUpdatedTeam1Score] = useState(item.scoreTeam1);
+  const [updatedTeam2Score, setUpdatedTeam2Score] = useState(item.scoreTeam2);
+  const [updatedTeam1Presence, setUpdatedTeam1Presence] = useState(
+    item.presenceTeam1
+  );
+  const [updatedTeam2Presence, setUpdatedTeam2Presence] = useState(
+    item.presenceTeam2
+  );
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -38,10 +39,10 @@ function EditGameModal({ item }) {
       played: item.played,
       team1: updatedTeam1,
       team2: updatedTeam2,
-      scoreTeam1: item.scoreTeam1,
-      scoreTeam2: item.scoreTeam2,
-      presenceTeam1: item.presenceTeam1,
-      presenceTeam2: item.presenceTeam2,
+      scoreTeam1: updatedTeam1Score,
+      scoreTeam2: updatedTeam2Score,
+      presenceTeam1: updatedTeam1Presence,
+      presenceTeam2: updatedTeam2Presence,
     };
     updateGame(updatedGame);
     setEditGameModalData(null);
@@ -58,135 +59,135 @@ function EditGameModal({ item }) {
   const handleSeasonInput = (e) => {
     e.target.value && setUpdatedSeason(e.target.value);
   };
+  const handleUpdatedTeam1ScoreChange = (e) => {
+    e.target.value && setUpdatedTeam1Score(e.target.value);
+  };
+  const handleUpdatedTeam2ScoreChange = (e) => {
+    e.target.value && setUpdatedTeam2Score(e.target.value);
+  };
+  const handleUpdatedTeam1PresenceChange = (e) => {
+    setUpdatedTeam1Presence(!updatedTeam1Presence);
+  };
+  const handleUpdatedTeam2PresenceChange = (e) => {
+    setUpdatedTeam2Presence(!updatedTeam2Presence);
+  };
 
   return (
-    <div>
-      <>
-        <div
-          className="modal-bg"
-          onClick={() => {
-            setEditGameModalData(null);
-          }}
-        >
-          <div
-            className="modal"
-            onClick={(event) => {
-              event.stopPropagation();
+    <>
+      <form onSubmit={onSubmit}>
+        <p>Datum i vreme:</p>
+        <Stack>
+          <DateTimePicker
+            renderInput={(params) => <TextField {...params} />}
+            defaultValue={moment(updatedDate)}
+            onChange={(newValue) => {
+              setUpdatedDate(newValue.toDate());
             }}
-          >
-            <button
-              className={"close-btn"}
-              type={"button"}
-              onClick={() => setEditGameModalData(null)}
-            >
-              X
-            </button>
-            <form onSubmit={onSubmit}>
-              <p>Datum i vreme:</p>
-              <Stack>
-                <DateTimePicker
-                  renderInput={(params) => <TextField {...params} />}
-                  defaultValue={moment(updatedDate)}
-                  onChange={(newValue) => {
-                    setUpdatedDate(newValue.toDate());
-                  }}
-                />
-              </Stack>
-              <label htmlFor="location">Lokacija:</label>
-              <select
-                defaultValue={updatedLocation}
-                name="location"
-                onChange={handleLocationInput}
-              >
-                {locations.map((e) => {
-                  return (
-                    <option key={e.id} value={e.id}>
-                      {e.name}
-                    </option>
-                  );
-                })}
-              </select>
-              <br />
-              <label htmlFor="team1">Tim 1:</label>
-              <select
-                defaultValue={updatedTeam1}
-                name="team1"
-                onChange={handleTeam1Input}
-              >
-                {teams.map((e) => {
-                  return (
-                    <option key={e.id} value={e.id}>
-                      {e.name}
-                    </option>
-                  );
-                })}
-              </select>
-              <br />
-              <label htmlFor="team2">Tim 2:</label>
-              <select
-                defaultValue={updatedTeam2}
-                name="team2"
-                onChange={handleTeam2Input}
-              >
-                {teams.map((e) => {
-                  return (
-                    <option key={e.id} value={e.id}>
-                      {e.name}
-                    </option>
-                  );
-                })}
-              </select>
-              <label htmlFor="season">Sezona:</label>
-              <select
-                name="season"
-                defaultValue={updatedSeason}
-                onChange={handleSeasonInput}
-              >
-                {seasons.map((e) => {
-                  return (
-                    <option key={e.id} value={e.id}>
-                      {e.name}
-                    </option>
-                  );
-                })}
-              </select>
-              <button className="btn-md" type="submit">
-                OK
-              </button>
-            </form>
-
-            <button
-              className="btn-md"
-              type="button"
-              onClick={() => {
-                setEditGameModalData(null);
-              }}
-            >
-              Odustani
-            </button>
-          </div>
-        </div>
-      </>
-    </div>
+          />
+        </Stack>
+        <label htmlFor="location">Lokacija:</label>
+        <select
+          defaultValue={updatedLocation}
+          name="location"
+          onChange={handleLocationInput}
+        >
+          {locations.map((e) => {
+            return (
+              <option key={e.id} value={e.id}>
+                {e.name}
+              </option>
+            );
+          })}
+        </select>
+        <br />
+        <label htmlFor="team1">Tim 1:</label>
+        <select
+          defaultValue={updatedTeam1}
+          name="team1"
+          onChange={handleTeam1Input}
+        >
+          {teams.map((e) => {
+            return (
+              <option key={e.id} value={e.id}>
+                {e.name}
+              </option>
+            );
+          })}
+        </select>
+        {item.played && (
+          <>
+            <label htmlFor="team1score">
+              <input
+                type="number"
+                name="team1score"
+                defaultValue={updatedTeam1Score}
+                onChange={handleUpdatedTeam1ScoreChange}
+              />
+            </label>
+            <label htmlFor="attended1">
+              <input
+                type="checkbox"
+                name="attended1"
+                checked={updatedTeam1Presence}
+                onChange={handleUpdatedTeam1PresenceChange}
+              />
+            </label>
+            <span> : </span>
+            <label htmlFor="attended2">
+              <input
+                type="checkbox"
+                name="attended2"
+                checked={updatedTeam2Presence}
+                onChange={handleUpdatedTeam2PresenceChange}
+              />
+            </label>
+            <label htmlFor="team2score">
+              <input
+                type="number"
+                name="team2score"
+                defaultValue={updatedTeam2Score}
+                onChange={handleUpdatedTeam2ScoreChange}
+              />
+            </label>
+          </>
+        )}
+        <select
+          defaultValue={updatedTeam2}
+          name="team2"
+          onChange={handleTeam2Input}
+        >
+          {teams.map((e) => {
+            return (
+              <option key={e.id} value={e.id}>
+                {e.name}
+              </option>
+            );
+          })}
+        </select>
+        <label htmlFor="team2">:Tim 2</label>
+        <br />
+        <label htmlFor="season">Sezona:</label>
+        <select
+          name="season"
+          defaultValue={updatedSeason}
+          onChange={handleSeasonInput}
+        >
+          {seasons.map((e) => {
+            return (
+              <option key={e.id} value={e.id}>
+                {e.name}
+              </option>
+            );
+          })}
+        </select>
+        <br />
+        <button className="btn-md" type="submit">
+          OK
+        </button>
+      </form>
+    </>
   );
 }
 
 export default EditGameModal;
 
-/*function EmplModal({ item }) {
-  const { setEmplModalData, updateEmployee } = useContext(applicationContext);
-  
-
-  function changeEmployee(e) {
-    e.preventDefault();
-    const updatedEmployee = {
-      id: item.id,
-      name: newName,
-      email: newEmail,
-      phone: newPhone,
-      dateOfBirth: newDateOfBirth,
-      salary: newSalary,
-    };
-    updateEmployee(updatedEmployee);
-    setEmplModalData(null);
-  }*/

@@ -16,7 +16,7 @@ function RezultatiPage() {
   const [gamePlayed, setGamePlayed] = useState(false);
   return (
     <div>
-      <h2>Rezultati Page</h2>
+      <h2>Rezultati</h2>
       <ul>
         {games &&
           games.map(

@@ -17,6 +17,7 @@ import DeleteGameModal from "./components/DeleteGameModal";
 import EditGameModal from "./components/EditGameModal";
 import CreateGameModal from "../src/components/CreateGameModal";
 import FinishGameModal from "../src/components/FinishGameModal";
+import Modal from "./components/Modal";
 import {
   collection,
   getDocs,
@@ -227,10 +228,34 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
         </Routes>
 
-        {deleteGameModalData && <DeleteGameModal item={deleteGameModalData} />}
-        {editGameModalData && <EditGameModal item={editGameModalData} />}
-        {createGameModalData && <CreateGameModal />}
-        {finishGameModalData && <FinishGameModal item={finishGameModalData} />}
+        {deleteGameModalData && (
+          <Modal
+            
+            setModalData={setDeleteGameModalData}
+            children={<DeleteGameModal item={deleteGameModalData}/>}
+          />
+        )}
+        {editGameModalData && (
+          <Modal
+            
+            setModalData={setEditGameModalData}
+            children={<EditGameModal item={editGameModalData}/>}
+          />
+        )}
+        {createGameModalData && (
+          <Modal
+            
+            setModalData={setCreateGameModalData}
+            children={<CreateGameModal item={createGameModalData}/>}
+          />
+        )}
+        {finishGameModalData && (
+          <Modal
+            
+            setModalData={setFinishGameModalData}
+            children={<FinishGameModal item={finishGameModalData}/>}
+          />
+        )}
 
         <Footer />
       </LocalizationProvider>

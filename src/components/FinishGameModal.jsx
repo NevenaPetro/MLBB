@@ -1,21 +1,12 @@
 import React, { useState, useContext } from "react";
 import { applicationContext } from "../../src/context/AplicationContext";
+import Modal from "./Modal";
 
 function FinishGameModal({ item }) {
   const {
-    locations,
-    teams,
-    seasons,
     setFinishGameModalData,
     updateGame,
-    setGameDate,
-    getLocationById,
     getTeamById,
-    getSeasonById,
-    setGameLocation,
-    setgameTeam1,
-    setgameTeam2,
-    setGameSeason,
   } = useContext(applicationContext);
 
   const [team1Score, setTeam1Score] = useState(0);
@@ -68,7 +59,7 @@ function FinishGameModal({ item }) {
   };
   const handleTeam1ScoreChange = (e) => {
     e.target.value && setTeam1Score(+e.target.value);
-    console.log(typeof team1Score)
+    console.log(typeof team1Score);
   };
   const handleTeam2ScoreChange = (e) => {
     e.target.value && setTeam2Score(+e.target.value);
@@ -76,72 +67,47 @@ function FinishGameModal({ item }) {
 
   return (
     <>
-      <div
-        className="modal-bg"
+      <form onSubmit={onSubmit}>
+        <label htmlFor="team1">{getTeamById(item.team1)}</label>
+        <label htmlFor="attended1">
+          <input
+            type="checkbox"
+            name="attended1"
+            checked={team1Attended}
+            onChange={handleChange1}
+          />
+          Prisustvovali?
+        </label>
+        <input type="number" name="team1" onChange={handleTeam1ScoreChange} />
+        <input
+          type="number"
+          name="team2"
+          onChange={handleTeam2ScoreChange}
+        />{" "}
+        <label htmlFor="attended2">
+          <input
+            type="checkbox"
+            name="attended2"
+            checked={team2Attended}
+            onChange={handleChange2}
+          />
+          Prisustvovali?
+        </label>
+        <label htmlFor="team2">{getTeamById(item.team2)}</label>
+        <br />
+        <button className="btn-md" type="submit">
+          OK
+        </button>
+      </form>
+      <button
+        className="btn-md"
+        type="button"
         onClick={() => {
           setFinishGameModalData(null);
         }}
       >
-        <div
-          className="modal"
-          onClick={(event) => {
-            event.stopPropagation();
-          }}
-        >
-          <button
-            className={"close-btn"}
-            type={"button"}
-            onClick={() => setFinishGameModalData(null)}
-          >
-            X
-          </button>
-          <form onSubmit={onSubmit}>
-            <label htmlFor="team1">{getTeamById(item.team1)}</label>
-            <label htmlFor="attended1">
-              <input
-                type="checkbox"
-                name="attended1"
-                checked={team1Attended}
-                onChange={handleChange1}
-              />
-              Prisustvovali?
-            </label>
-            <input
-              type="number"
-              name="team1"
-              onChange={handleTeam1ScoreChange}
-            />
-            <input
-              type="number"
-              name="team2"
-              onChange={handleTeam2ScoreChange}
-            />{" "}
-            <label htmlFor="attended2">
-              <input
-                type="checkbox"
-                name="attended2"
-                checked={team2Attended}
-                onChange={handleChange2}
-              />
-              Prisustvovali?
-            </label>
-            <label htmlFor="team2">{getTeamById(item.team2)}</label>
-            <br />
-            <button className="btn-md" type="submit">
-              OK
-            </button>
-          </form>
-          <button
-            className="btn-md"
-            type="button"
-            onClick={() => {
-              setFinishGameModalData(null);
-            }}
-          >
-            Odustani
-          </button>
-        </div>
-      </div>
+        Odustani
+      </button>
     </>
   );
 }
