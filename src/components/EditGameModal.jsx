@@ -38,8 +38,8 @@ function EditGameModal({item}) {
       played: item.played,
       team1: updatedTeam1,
       team2: updatedTeam2,
-      scoreTeam1: updatedTeam1Score,
-      scoreTeam2: updatedTeam2Score,
+      scoreTeam1: +updatedTeam1Score,
+      scoreTeam2: +updatedTeam2Score,
       presenceTeam1: updatedTeam1Presence,
       presenceTeam2: updatedTeam2Presence,
     };

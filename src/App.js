@@ -18,6 +18,9 @@ import EditGameModal from "./components/EditGameModal";
 import CreateGameModal from "../src/components/CreateGameModal";
 import FinishGameModal from "../src/components/FinishGameModal";
 import Modal from "./components/Modal/Modal";
+import EditTeamModal from "./components/EditTeamModal";
+import CreateTeamModal from "./components/CreateTeamModal";
+import DeletTeamModal from './components/DeleteTeamModal'
 import {
   collection,
   getDocs,
@@ -46,6 +49,9 @@ function App() {
   const [editGameModalData, setEditGameModalData] = useState(null);
   const [createGameModalData, setCreateGameModalData] = useState(null);
   const [finishGameModalData, setFinishGameModalData] = useState(null);
+  const [editTeamModalData, setEditTeamModalData] = useState(null);
+  const [createTeamModalData, setCreateTeamModalData] = useState(null);
+  const [deleteTeamModalData, setDeleteTeamModalData] = useState(null);
 
   useEffect(() => {
     const fetchTeams = async () => {
@@ -162,10 +168,22 @@ function App() {
       presenceTeam2: item.presenceTeam2,
     });
   }
+  function updateTeam(item) {
+    let differenceList = teams.filter((e) => e.id !== item.id);
+    let newTeam = [...differenceList, item];
+    setTeams(newTeam);
+    updateDoc(doc(db, "teams", item.id), {
+      name: item.name,
+    });
+  }
 
   function deleteGame(item) {
     setGames(games.filter((e) => e.id !== item.id));
     deleteDoc(doc(db, "games", item.id));
+  }
+  function deleteTeam(item) {
+    setTeams(teams.filter((e) => e.id !== item.id));
+    deleteDoc(doc(db, "teams", item.id));
   }
 
   function getLocationById(id) {
@@ -210,7 +228,12 @@ function App() {
         setEditGameModalData,
         setCreateGameModalData,
         setFinishGameModalData,
+        setEditTeamModalData,
+        setCreateTeamModalData,
+        setDeleteTeamModalData,
         updateGame,
+        updateTeam,
+        deleteTeam,
       }}
     >
       <LocalizationProvider dateAdapter={AdapterMoment} adapterLocale="sr">
@@ -252,6 +275,25 @@ function App() {
             children={<FinishGameModal item={finishGameModalData} />}
           />
         )}
+        {createTeamModalData && (
+          <Modal
+            setModalData={setCreateTeamModalData}
+            children={<CreateTeamModal item={1} />}
+          />
+        )}
+        {editTeamModalData && (
+          <Modal
+            setModalData={setEditTeamModalData}
+            children={<EditTeamModal item={editTeamModalData} />}
+          />
+        )}
+        {deleteTeamModalData && (
+          <Modal
+            setModalData={setDeleteTeamModalData}
+            children={<DeletTeamModal item={deleteTeamModalData} />}
+          />
+        )}
+
         <Footer />
       </LocalizationProvider>
     </ApplicationProvider>

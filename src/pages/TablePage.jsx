@@ -71,7 +71,15 @@ function TablePage() {
       }
     }
     if (existing2) {
+      existing2.teamId = existing2.teamId;
       existing2.gamesPlayed += 1;
+      existing2.wins = existing2.wins + teamWins;
+      existing2.loses = existing2.loses + teamLoses;
+      existing2.points = existing2.points + teamPoints;
+      existing2.pointsReceived = existing2.pointsReceived + game.scoreTeam1;
+      existing2.pointsScored = existing2.pointsScored + game.scoreTeam2;
+      existing2.pointsDifference =
+        existing2.pointsDifference + (game.scoreTeam2 - game.scoreTeam1);
     } else {
       tableList.push({
         teamId: game.team2,
@@ -113,6 +121,7 @@ function TablePage() {
         <tbody>
           <tr>
             <th>TIM</th>
+            <th>ODIGR.</th>
             <th>POB.</th>
             <th>POR.</th>
             <th>KOŠ+</th>
