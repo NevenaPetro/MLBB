@@ -1,42 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../Header/header.css";
-
+import "../Header/_header.scss";
+import Logo from "../../assets/mlbb_logo.png";
 
 function Header() {
+  const [active, setActive] = useState(false);
+  const menuIcon = "menuIcon";
   return (
     <>
       <header className="header">
-        <div>
+        <div className="logo">
           <Link to="/">
-            <h3>M L B B</h3>
+            <img src={Logo} alt="logo" />
           </Link>
         </div>
-        <nav className="menu">
-          <Link to="/raspored">
-            <button className="header-btn">RASPORED</button>
+        <nav className={`navigation ${active ? menuIcon : ""}`}>
+          <Link
+            to="/raspored"
+            onClick={() => {
+              setActive(!active);
+            }}
+          >
+            Raspored
           </Link>
-          <Link to="/rezultati">
-            <button className="header-btn">REZULTATI</button>
+          <Link
+            to="/rezultati"
+            onClick={() => {
+              setActive(!active);
+            }}
+          >
+            Rezultati
           </Link>
-          <Link to="/tabela">
-            <button className="header-btn">TABELA</button>
+          <Link
+            to="/tabela"
+            onClick={() => {
+              setActive(!active);
+            }}
+          >
+            Tabela
           </Link>
-          <Link to="/timovi">
-            <button className="header-btn">TIMOVI</button>
+          <Link
+            to="/timovi"
+            onClick={() => {
+              setActive(!active);
+            }}
+          >
+            Timovi
           </Link>
-          <Link to="/media">
-            <button className="header-btn">MEDIA</button>
+          <Link
+            to="/media"
+            onClick={() => {
+              setActive(!active);
+            }}
+          >
+            Media
           </Link>
-          <Link to="/onama">
-            <button className="header-btn">O NAMA</button>
+          <Link
+            to="/onama"
+            onClick={() => {
+              setActive(!active);
+            }}
+          >
+            O nama
           </Link>
-          <Link to="/kontakt">
-            <button className="header-btn">KONTAKT</button>
+          <Link
+            to="/kontakt"
+            onClick={() => {
+              setActive(!active);
+            }}
+          >
+            Kontakt
           </Link>
+          <div
+            className={`hamburger ${active ? menuIcon : ""}`}
+            onClick={() => {
+              setActive(!active);
+            }}
+          >
+            <span className={`bar `}></span>
+            <span className={`bar `}></span>
+          </div>
         </nav>
       </header>
-      
     </>
   );
 }

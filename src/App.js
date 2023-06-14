@@ -34,6 +34,7 @@ import { db } from "./firebase.config";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import "moment/locale/sr";
+import './app.scss';
 
 function App() {
   const [teams, setTeams] = useState([]);

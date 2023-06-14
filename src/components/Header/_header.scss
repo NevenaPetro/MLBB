@@ -1,0 +1,42 @@
+.header {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  font-size: 26px;
+
+  .logo {
+    
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+
+
+.navigation {
+  
+  display: flex;
+  justify-content: center;
+  height: inherit;
+  width: 70%;
+
+  a {
+    font-size: 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: #592290;
+    &:hover {
+      cursor: pointer;
+      text-decoration-line: underline;
+      color: orange;
+    }
+  }
+}
+
+
+
+
