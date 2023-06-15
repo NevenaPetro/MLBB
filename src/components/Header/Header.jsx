@@ -26,7 +26,8 @@ function Header() {
         </div>
         <nav className={`navigation ${active ? menuIcon : ""}`}>
           <Link
-            to="/raspored"
+           to={"/"}
+           state={{ section: "raspored" }}
             onClick={() => {
               setActive(!active);
             }}
@@ -34,7 +35,8 @@ function Header() {
             Raspored
           </Link>
           <Link
-            to="/rezultati"
+           to={"/"}
+           state={{ section: "rezultati" }}
             onClick={() => {
               setActive(!active);
             }}
@@ -42,7 +44,8 @@ function Header() {
             Rezultati
           </Link>
           <Link
-            to="/tabela"
+            to={"/"}
+            state={{ section: "tabela" }}
             onClick={() => {
               setActive(!active);
             }}
@@ -50,7 +53,8 @@ function Header() {
             Tabela
           </Link>
           <Link
-            to="/timovi"
+            to={"/"}
+            state={{ section: "timovi" }}
             onClick={() => {
               setActive(!active);
             }}
@@ -58,7 +62,8 @@ function Header() {
             Timovi
           </Link>
           <Link
-            to="/media"
+            to={"/"}
+            state={{ section: "media" }}
             onClick={() => {
               setActive(!active);
             }}
@@ -66,7 +71,8 @@ function Header() {
             Media
           </Link>
           <Link
-            to="/onama"
+            to={"/"}
+            state={{ section: "onama" }}
             onClick={() => {
               setActive(!active);
             }}
@@ -74,7 +80,8 @@ function Header() {
             O nama
           </Link>
           <Link
-            to="/kontakt"
+            to={"/"}
+            state={{ section: "kontakt" }}
             onClick={() => {
               setActive(!active);
             }}
