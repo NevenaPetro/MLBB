@@ -1,0 +1,23 @@
+@import "../../_variables.scss";
+
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: $color-canvas-secondary;
+  .login_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 12px;
+  }
+  button {
+    border: none;
+    background-color: $color-canvas-primary;
+    width: 70px;
+    height: 30px;
+    font-size: 14px;
+    margin-right: 40px;
+  }
+}

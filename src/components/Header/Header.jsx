@@ -8,11 +8,21 @@ function Header() {
   const menuIcon = "menuIcon";
   return (
     <>
-      <header className="header">
-        <div className="logo">
-          <Link to="/">
-            <img src={Logo} alt="logo" />
-          </Link>
+      <div className="logo">
+        <Link to="/">
+          <img src={Logo} alt="logo" />
+        </Link>
+      </div>
+      <div className="menu">
+        <div
+          className={`hamburger ${active ? menuIcon : ""}`}
+          onClick={() => {
+            setActive(!active);
+          }}
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
         </div>
         <nav className={`navigation ${active ? menuIcon : ""}`}>
           <Link
@@ -71,17 +81,8 @@ function Header() {
           >
             Kontakt
           </Link>
-          <div
-            className={`hamburger ${active ? menuIcon : ""}`}
-            onClick={() => {
-              setActive(!active);
-            }}
-          >
-            <span className={`bar `}></span>
-            <span className={`bar `}></span>
-          </div>
         </nav>
-      </header>
+      </div>
     </>
   );
 }
