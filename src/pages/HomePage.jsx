@@ -5,6 +5,8 @@ import { useAuthStatus } from "../hooks/useAuthStatus";
 import { useLocation } from "react-router-dom";
 import GameItem from "../components/GameItem";
 import TableItem from "../components/Table/TableItem";
+import PosterImg from "../assets/simple_poster.png";
+import "./_homepage.scss";
 
 function HomePage() {
   let data = useLocation();
@@ -131,7 +133,12 @@ function HomePage() {
   return (
     <>
       <div id="homepage-wrapper">
-        <h1>Mala liga bez briga</h1>
+        
+        <img src={PosterImg} alt="poster" />
+        <h1>
+          <span>M</span>ala <span>L</span>iga <span>B</span>ez <span>B</span>
+          riga
+        </h1>
       </div>
       <section id="raspored">
         <h2>Raspored</h2>
@@ -216,51 +223,51 @@ function HomePage() {
         </table>
       </section>
       <section id="timovi">
-      <h2>Timovi</h2>
-      {loggedIn && (
-        <button
-          onClick={() => {
-            setCreateTeamModalData(1);
-          }}
-        >
-          Kreiraj novi tim
-        </button>
-      )}
-      <ul>
-        {teams &&
-          teams.map((e) => (
-            <li key={e.id}>
-              <span>{e.name}</span>
-              {loggedIn && (
-                <>
-                  <button
-                    onClick={() => {
-                      setEditTeamModalData(e);
-                    }}
-                  >
-                    Izmeni
-                  </button>
-                  <button
-                    onClick={() => {
-                      setDeleteTeamModalData(e);
-                    }}
-                  >
-                    Izbriši
-                  </button>
-                </>
-              )}
-            </li>
-          ))}
-      </ul>
+        <h2>Timovi</h2>
+        {loggedIn && (
+          <button
+            onClick={() => {
+              setCreateTeamModalData(1);
+            }}
+          >
+            Kreiraj novi tim
+          </button>
+        )}
+        <ul>
+          {teams &&
+            teams.map((e) => (
+              <li key={e.id}>
+                <span>{e.name}</span>
+                {loggedIn && (
+                  <>
+                    <button
+                      onClick={() => {
+                        setEditTeamModalData(e);
+                      }}
+                    >
+                      Izmeni
+                    </button>
+                    <button
+                      onClick={() => {
+                        setDeleteTeamModalData(e);
+                      }}
+                    >
+                      Izbriši
+                    </button>
+                  </>
+                )}
+              </li>
+            ))}
+        </ul>
       </section>
       <section id="media">
-      <h2>Media</h2>
+        <h2>Media</h2>
       </section>
       <section id="onama">
-      <h2>O nama</h2>
+        <h2>O nama</h2>
       </section>
       <section id="kontakt">
-      <h2>Kontakt</h2>
+        <h2>Kontakt</h2>
       </section>
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../Header/_header.scss";
-import Logo from "../../assets/mlbb_logo.png";
+import Logo from "../../assets/mlbb_logo_2.png";
 
 function Header() {
   const [active, setActive] = useState(false);
