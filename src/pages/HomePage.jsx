@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { applicationContext } from "../../src/context/AplicationContext";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { useLocation } from "react-router-dom";
-import GameItem from "../components/GameItem";
+import GameItemRaspored from "../components/GameItemRaspored";
+import GameItemRezultati from "../components/GameItemRezultati";
 import TableItem from "../components/Table/TableItem";
 import PosterImg from "../assets/simple_poster.png";
 import "./_homepage.scss";
@@ -131,9 +132,8 @@ function HomePage() {
   });
 
   return (
-    <>
-      <div id="homepage-wrapper">
-        
+    <div className="homepage-wrapper">
+      <div id="welcomepage-wrapper">
         <img src={PosterImg} alt="poster" />
         <h1>
           <span>M</span>ala <span>L</span>iga <span>B</span>ez <span>B</span>
@@ -148,21 +148,22 @@ function HomePage() {
               (e) =>
                 !e.played && (
                   <li key={e.id}>
-                    <GameItem item={e}></GameItem>
+                    <GameItemRaspored item={e}></GameItemRaspored>
                   </li>
                 )
             )}
         </ul>
         {loggedIn && (
-          <>
+          <div className="game-buttons">
             <button
+              className="big-buttons"
               onClick={() => {
                 setCreateGameModalData(1);
               }}
             >
               Kreiraj novu utakmicu:
             </button>
-          </>
+          </div>
         )}
       </section>
       <section id="rezultati">
@@ -173,7 +174,7 @@ function HomePage() {
               (e) =>
                 e.played && (
                   <li key={e.id}>
-                    <GameItem item={e}></GameItem>
+                    <GameItemRezultati item={e}></GameItemRezultati>
                   </li>
                 )
             )}
@@ -224,23 +225,16 @@ function HomePage() {
       </section>
       <section id="timovi">
         <h2>Timovi</h2>
-        {loggedIn && (
-          <button
-            onClick={() => {
-              setCreateTeamModalData(1);
-            }}
-          >
-            Kreiraj novi tim
-          </button>
-        )}
+
         <ul>
           {teams &&
             teams.map((e) => (
               <li key={e.id}>
                 <span>{e.name}</span>
                 {loggedIn && (
-                  <>
+                  <div className="game-buttons">
                     <button
+                      className="big-buttons"
                       onClick={() => {
                         setEditTeamModalData(e);
                       }}
@@ -248,17 +242,30 @@ function HomePage() {
                       Izmeni
                     </button>
                     <button
+                      className="big-buttons"
                       onClick={() => {
                         setDeleteTeamModalData(e);
                       }}
                     >
                       Izbriši
                     </button>
-                  </>
+                  </div>
                 )}
               </li>
             ))}
         </ul>
+        {loggedIn && (
+          <div className="game-buttons">
+            <button
+              className="big-buttons"
+              onClick={() => {
+                setCreateTeamModalData(1);
+              }}
+            >
+              Kreiraj novi tim
+            </button>
+          </div>
+        )}
       </section>
       <section id="media">
         <h2>Media</h2>
@@ -269,7 +276,7 @@ function HomePage() {
       <section id="kontakt">
         <h2>Kontakt</h2>
       </section>
-    </>
+    </div>
   );
 }
 

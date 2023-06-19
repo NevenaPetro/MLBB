@@ -236,6 +236,7 @@ function App() {
         <LoginHeader />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/login" element={<LoginPage />} />
           
         </Routes>
 

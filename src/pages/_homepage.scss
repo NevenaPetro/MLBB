@@ -1,28 +1,121 @@
 @import "../variables";
 
-#homepage-wrapper {
-  position: relative;
-  height: 300px;
-  img {
-    opacity: 0.5;
-    width: 80%;
-    margin-left: -20px;
+.homepage-wrapper {
+  color: $color-text-primary;
+
+  .game-buttons {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 20px;
+    .big-buttons {
+      margin: 0 15px;
+      padding: 5px;
+      background-color: $color-brand-secondary;
+      color: $color-text-primary-2;
+      border: none;
+      box-shadow: 2px 2px 10px -2px rgba(0, 0, 0, 0.8);
+    }
   }
-  h1 {
-    margin: 5%;
-    position: absolute;
-    top: 55%;
-    color: $color-brand-primary;
+  h2 {
     font-size: 30px;
-    font-weight: 100;
-    span {
-      font-size: 50px;
-      fill: none;
-      color: linear-gradient(
-        
-        rgba(0, 0, 0, 1) 30%,
-        rgba(89, 34, 144, 1) 70%
-      );
+    color: $color-text-secondary;
+    width: 150px;
+    margin: 0 auto;
+    padding: 40px 0 20px 0;
+  }
+
+  #welcomepage-wrapper {
+    position: relative;
+    height: 350px;
+    img {
+      opacity: 0.5;
+      width: 80%;
+      margin-left: -20px;
+    }
+    h1 {
+      margin: 5%;
+      position: absolute;
+      top: 55%;
+      color: $color-text-primary;
+      font-size: 30px;
+      font-weight: 100;
+      span {
+        font-size: 50px;
+      }
+    }
+  }
+
+  #raspored {
+    background: url("../assets/background_image_basketball.png");
+    padding-bottom: 20px;
+
+    ul {
+      list-style-type: none;
+      li {
+        background-color: $color-canvas-primary;
+        color: $color-text-primary;
+        font-size: 12px;
+        width: 90%;
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: 2px 2px 10px -2px rgba(0, 0, 0, 0.8);
+        .team-names {
+          font-size: 16px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 10px 0 20px 0;
+        }
+        .game-info-raspored {
+          div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+  #rezultati {
+    background-color: $color-canvas-primary;
+
+    padding-bottom: 20px;
+  }
+  ul {
+    list-style-type: none;
+    li {
+      width: 90%;
+      background-color: $color-canvas-secondary;
+      color: $color-brand-primary;
+      margin: 20px auto;
+      padding: 20px;
+      box-shadow: 2px 2px 10px -2px rgba(0, 0, 0, 0.8);
+      .team-results {
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 10px 0 20px 0;
+        div {
+          width: 45%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .team-name {
+            font-size: 12px;
+          }
+          .team-scores {
+            font-size: 34px;
+          }
+        }
+      }
+      .game-info-rezultati {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
   }
 }

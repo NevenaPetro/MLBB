@@ -1,12 +1,8 @@
 import React from "react";
 import Moment from "react-moment";
 import { useAuthStatus } from "../hooks/useAuthStatus";
-import { useState, useContext } from "react";
-import { applicationContext } from "../../src/context/AplicationContext";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { useContext } from "react";
+import { applicationContext } from "../context/AplicationContext";
 import moment from "moment";
 import "moment/locale/sr";
 
@@ -24,25 +20,32 @@ function GameItem({ item }) {
   return (
     <>
       <>
-        <span>
-          <b>Datum i vreme:</b> <Moment format="L LT">{item.date}</Moment>h
-        </span>
-        <span>
-          <b> Lokacija:</b> {getLocationById(item.location)}
-        </span>
-        <span>
-          <b> Sezona:</b> {getSeasonById(item.season)}
-        </span>
-        <br />
-        <span>{getTeamById(item.team1)} </span>
-        {item.played && (<span> <b>{item.scoreTeam1}</b></span>)}
-        <span>  :  </span>
-        {item.played && (<span><b>{item.scoreTeam2}</b> </span>)}
-        <span> {getTeamById(item.team2)}</span>
-        <br />
+        <div className="team-names">
+          <span>{getTeamById(item.team1)} </span>
+          <span> &nbsp; : &nbsp; </span>
+          <span> {getTeamById(item.team2)}</span>
+        </div>
+        <div className="game-info-raspored">
+          <div>
+            <span>Datum i vreme: </span>
+            <span>
+              <Moment format="L LT">{item.date}</Moment>h
+            </span>
+          </div>
+          <div>
+            <span>Lokacija: </span>
+            <span> {getLocationById(item.location)}</span>
+          </div>
+          <div>
+            <span>Sezona: </span>
+            <span>{getSeasonById(item.season)}</span>
+          </div>
+        </div>
+
         {loggedIn && (
-          <>
+          <div className="game-buttons">
             <button
+              className="big-buttons"
               onClick={() => {
                 setDeleteGameModalData(item);
               }}
@@ -50,6 +53,7 @@ function GameItem({ item }) {
               Obriši
             </button>
             <button
+              className="big-buttons"
               onClick={() => {
                 setEditGameModalData(item);
               }}
@@ -58,17 +62,16 @@ function GameItem({ item }) {
             </button>
             {!item.played && (
               <button
+                className="big-buttons"
                 onClick={() => {
                   setFinishGameModalData(item);
                 }}
               >
-                Završi utakmicu
+                Rezultat
               </button>
             )}
-          </>
+          </div>
         )}
-        <br />
-        <br />
       </>
     </>
   );
