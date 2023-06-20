@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import '../Modal/modal.css'
+import '../Modal/_modal.scss'
 
 function Modal({ setModalData, children }) {
     function handleEsc(event) {
@@ -15,7 +15,7 @@ function Modal({ setModalData, children }) {
         };
       }, []);
   return (
-    <>
+    <div className="modal-wrapper">
       <div
         className="modal-bg"
         onClick={() => {
@@ -29,7 +29,7 @@ function Modal({ setModalData, children }) {
           }}
         >
           <button
-            className={"close-btn"}
+            className="close-btn"
             type={"button"}
             onClick={() => setModalData(null)}
           >
@@ -47,7 +47,7 @@ function Modal({ setModalData, children }) {
             </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

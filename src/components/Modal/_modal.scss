@@ -1,0 +1,58 @@
+@import "../../_variables.scss";
+
+.modal-wrapper {
+  .modal-bg {
+    position: fixed;
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4.9px);
+    z-index: 2;
+    .modal {
+      background-color: #1f6028;
+      position: fixed;
+      width: 100%;
+      min-height: 20%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      .close-btn {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        border: none;
+        color: #00a0df;
+        background-color: #eaeaea;
+        border-radius: 20px;
+        font-weight: 700;
+        width: 20px;
+        height: 20px;
+      }
+      .close-btn:hover {
+        cursor: pointer;
+        background-color: #3d3935;
+        color: #00a0df;
+        transition: all 0.3s ease;
+      }
+      .modal form {
+        border: none;
+        input {
+          background-color: #eaeaea;
+          border: none;
+          border-radius: 20px;
+          padding: 5px 10px;
+          margin: 0 10px;
+        }
+        p {
+          border: none;
+        }
+      }
+    }
+  }
+}

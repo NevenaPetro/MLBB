@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useContext } from "react";
 import { applicationContext } from "../context/AplicationContext";
+import '../components/Modal/_modal.scss';
 
 function EditTeamModal({ item }) {
   const { setEditTeamModalData, updateTeam } = useContext(applicationContext);

@@ -4,6 +4,7 @@ import { applicationContext } from "../../src/context/AplicationContext";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { Stack, TextField } from "@mui/material";
 import moment from "moment";
+import '../components/Modal/_modal.scss';
 
 function CreateGameModal() {
   const {

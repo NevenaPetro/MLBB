@@ -4,6 +4,7 @@ import { applicationContext } from "../context/AplicationContext";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { Stack, TextField } from "@mui/material";
 import moment from "moment";
+import '../components/Modal/_modal.scss';
 
 function EditGameModal({item}) {
   const {
@@ -77,6 +78,7 @@ function EditGameModal({item}) {
         <p>Datum i vreme:</p>
         <Stack>
           <DateTimePicker
+          className="date-picker-mlbb"
             renderInput={(params) => <TextField {...params} />}
             defaultValue={moment(updatedDate)}
             onChange={(newValue) => {

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { applicationContext } from "../../src/context/AplicationContext";
 
+import '../components/Modal/_modal.scss';
 function FinishGameModal({ item }) {
   const {
     setFinishGameModalData,

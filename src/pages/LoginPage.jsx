@@ -4,6 +4,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { db } from "../firebase.config";
 import { Link, useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import "./_loginpage.scss";
 
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,7 +31,7 @@ function LoginPage() {
         email,
         password
       );
-      
+
       if (userCredentials.user) {
         navigate("/raspored");
       }
@@ -40,30 +41,39 @@ function LoginPage() {
   };
 
   return (
-    <>
+    <div className="login-wrapper">
       <form onSubmit={onSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          id="email"
-          value={email}
-          onChange={onChange}
-        />
-        <input
-          type={showPassword ? "text" : "password"}
-          placeholder="Password"
-          id="password"
-          value={password}
-          onChange={onChange}
-        />
-        <VisibilityIcon
-          alt="show password"
-          onClick={() => setShowPassword((prevState) => !prevState)}
-        />
-        <Link to="/forgot-password">Forgot Password?</Link>
-        <button>Log in</button>
+        <div className="input-wrapper">
+          <input
+            type="email"
+            placeholder="Email"
+            id="email"
+            value={email}
+            onChange={onChange}
+          />
+          <div className="password-input">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              id="password"
+              value={password}
+              onChange={onChange}
+            />
+            <VisibilityIcon
+              className="visibility-icon"
+              alt="show password"
+              onClick={() => setShowPassword((prevState) => !prevState)}
+            />
+          </div>
+        </div>
+        <div className="game-buttons">
+          {" "}
+          <button className="big-buttons">Log in</button>
+          <Link className="forgot-password"
+          to="/forgot-password">Forgot Password?</Link>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

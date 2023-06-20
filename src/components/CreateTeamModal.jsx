@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useContext } from "react";
 import { applicationContext } from "../../src/context/AplicationContext";
+import '../components/Modal/_modal.scss';
 
 function CreateTeamModal() {
   const { createNewTeam, setCreateTeamModalData } =

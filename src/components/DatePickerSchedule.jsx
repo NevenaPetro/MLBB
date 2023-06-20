@@ -1,13 +1,14 @@
 import React from "react";
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
+import './_datepicker.scss';
 
 const DatePickerSchedule = ({ startDate, setStartDate }) => {
   const now = new Date();
 
   return (
     <DatePicker
+    
       selected={startDate}
       includeDateIntervals={[
         {
