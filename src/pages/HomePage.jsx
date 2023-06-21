@@ -183,7 +183,7 @@ function HomePage() {
       <section id="tabela">
         <h2>Tabela</h2>
         <label htmlFor="season">Sezona:</label>
-        <select defaultValue={"15"} name="season" onChange={handleSeasonSelect}>
+        <select defaultValue={"15"} id="season" onChange={handleSeasonSelect}>
           {seasons.map((e) => {
             return (
               <option key={e.id} value={e.id}>
@@ -263,49 +263,52 @@ function HomePage() {
         <h2>Media</h2>
       </section>
       <section id="onama">
-        <h2>O nama</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ullam ab
-          iste optio eum eligendi distinctio laborum atque ea commodi modi
-          consectetur, quasi ipsa id dolorum rem explicabo? Impedit porro velit
-          maxime labore sed inventore rem nobis architecto illum, voluptates
-          modi magnam, nam et! Nihil modi voluptates, eum, quos nesciunt commodi
-          ratione sequi, quas mollitia ut labore dignissimos. Quo quisquam
-          eligendi nostrum voluptatem modi tempore suscipit. Itaque nam minus
-          eaque optio illo dignissimos iusto delectus, obcaecati accusamus
-          deserunt dicta labore voluptate cupiditate quo modi aliquid! Eum,
-          consequatur, aliquid neque dolore rerum cum, quis consequuntur ullam
-          optio laudantium nesciunt voluptas sint?
-        </p>
-        
+        <div className="onama-wrapper">
+          <h2>O nama</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ullam
+            ab iste optio eum eligendi distinctio laborum atque ea commodi modi
+            consectetur, quasi ipsa id dolorum rem explicabo? Impedit porro
+            velit maxime labore sed inventore rem nobis architecto illum,
+            voluptates modi magnam, nam et! Nihil modi voluptates, eum, quos
+            nesciunt commodi ratione sequi, quas mollitia ut labore dignissimos.
+            Quo quisquam eligendi nostrum voluptatem modi tempore suscipit.
+            Itaque nam minus eaque optio illo dignissimos iusto delectus,
+            obcaecati accusamus deserunt dicta labore voluptate cupiditate quo
+            modi aliquid! Eum, consequatur, aliquid neque dolore rerum cum, quis
+            consequuntur ullam optio laudantium nesciunt voluptas sint?
+          </p>
+        </div>
       </section>
       <section id="kontakt">
         <h2>Kontakt</h2>
-        <h3>Telefoni:</h3>
-        <p>+381 63 592 290</p>
-        <p>+381 65 434 7600</p>
-        <h3>Email:</h3>
-        <p>5ra.bojan.petrovic@gmail.com</p>
+        <div className="kontakt-wrapper">
+          <h3>Telefoni:</h3>
+          <p>+381 63 592 290</p>
+          <p>+381 65 434 7600</p>
+          <h3>Email:</h3>
+          <p>5ra.bojan.petrovic@gmail.com</p>
 
-        <h3>Utakmice se održavaju na dve lokacije u Beogradu:</h3>
-        <p>1. BTC Basketball Training Center</p>
-        <p>Olimpijskih igara 14, Žarkovo, Beograd</p>
-        <iframe
-          className="contact-map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d538.1932239067459!2d20.423558727832877!3d44.76190296188467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a71da3d5fd06d%3A0xf9ce1ef300494bcc!2sBTC%20Basketball%20Training%20Center!5e1!3m2!1sen!2srs!4v1687266162511!5m2!1sen!2srs"
-          allowFullScreen=""
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
-        <p>2. Osnovna škola „Jovan Ristić“</p>
-        <p>Bele Bartoka 48a, Borča, Beograd</p>
-        <iframe
-          className="contact-map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5653.7252700249755!2d20.449093207875553!3d44.87491365398277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a648433dbc4a3%3A0x61ec9d3c4114bab4!2zT3Nub3ZuYSDFoWtvbGEg4oCeSm92YW4gUmlzdGnEh-KAnA!5e1!3m2!1sen!2srs!4v1687266991291!5m2!1sen!2srs"
-          allowFullScreen=""
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+          <h3>Utakmice se održavaju na dve lokacije u Beogradu:</h3>
+          <p>1. BTC Basketball Training Center</p>
+          <p>Olimpijskih igara 14, Žarkovo, Beograd</p>
+          <iframe
+            className="contact-map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d538.1932239067459!2d20.423558727832877!3d44.76190296188467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a71da3d5fd06d%3A0xf9ce1ef300494bcc!2sBTC%20Basketball%20Training%20Center!5e1!3m2!1sen!2srs!4v1687266162511!5m2!1sen!2srs"
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <p>2. Osnovna škola „Jovan Ristić“</p>
+          <p>Bele Bartoka 48a, Borča, Beograd</p>
+          <iframe
+            className="contact-map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5653.7252700249755!2d20.449093207875553!3d44.87491365398277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a648433dbc4a3%3A0x61ec9d3c4114bab4!2zT3Nub3ZuYSDFoWtvbGEg4oCeSm92YW4gUmlzdGnEh-KAnA!5e1!3m2!1sen!2srs!4v1687266991291!5m2!1sen!2srs"
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </section>
     </div>
   );

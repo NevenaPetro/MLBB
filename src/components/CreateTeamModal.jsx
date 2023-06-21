@@ -29,7 +29,7 @@ function CreateTeamModal() {
         <label htmlFor="createTeamName">
           <input
             type="text"
-            name="createTeamName"
+            id="createTeamName"
             defaultValue={teamName}
             onChange={handleCreatedTeamName}
           />

@@ -74,11 +74,11 @@ function EditGameModal({item}) {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form className='modal-form' onSubmit={onSubmit}>
         <p>Datum i vreme:</p>
         <Stack>
           <DateTimePicker
-          className="date-picker-mlbb"
+          
             renderInput={(params) => <TextField {...params} />}
             defaultValue={moment(updatedDate)}
             onChange={(newValue) => {
@@ -86,10 +86,10 @@ function EditGameModal({item}) {
             }}
           />
         </Stack>
-        <label htmlFor="location">Lokacija:</label>
+        <label htmlFor="location">Lokacija:
         <select
           defaultValue={updatedLocation}
-          name="location"
+          id="location"
           onChange={handleLocationInput}
         >
           {locations.map((e) => {
@@ -100,11 +100,11 @@ function EditGameModal({item}) {
             );
           })}
         </select>
-        <br />
+        </label>
         <label htmlFor="team1">Tim 1:</label>
         <select
           defaultValue={updatedTeam1}
-          name="team1"
+          id="team1"
           onChange={handleTeam1Input}
         >
           {teams.map((e) => {
@@ -120,7 +120,7 @@ function EditGameModal({item}) {
             <label htmlFor="team1score">
               <input
                 type="number"
-                name="team1score"
+                id="team1score"
                 defaultValue={updatedTeam1Score}
                 onChange={handleUpdatedTeam1ScoreChange}
               />
@@ -128,7 +128,7 @@ function EditGameModal({item}) {
             <label htmlFor="attended1">
               <input
                 type="checkbox"
-                name="attended1"
+                id="attended1"
                 checked={updatedTeam1Presence}
                 onChange={handleUpdatedTeam1PresenceChange}
               />
@@ -137,7 +137,7 @@ function EditGameModal({item}) {
             <label htmlFor="attended2">
               <input
                 type="checkbox"
-                name="attended2"
+                id="attended2"
                 checked={updatedTeam2Presence}
                 onChange={handleUpdatedTeam2PresenceChange}
               />
@@ -145,7 +145,7 @@ function EditGameModal({item}) {
             <label htmlFor="team2score">
               <input
                 type="number"
-                name="team2score"
+                id="team2score"
                 defaultValue={updatedTeam2Score}
                 onChange={handleUpdatedTeam2ScoreChange}
               />
@@ -154,7 +154,7 @@ function EditGameModal({item}) {
         )}
         <select
           defaultValue={updatedTeam2}
-          name="team2"
+          id="team2"
           onChange={handleTeam2Input}
         >
           {teams.map((e) => {
@@ -166,10 +166,10 @@ function EditGameModal({item}) {
           })}
         </select>
         <label htmlFor="team2">:Tim 2</label>
-        <br />
+       
         <label htmlFor="season">Sezona:</label>
         <select
-          name="season"
+          id="season"
           defaultValue={updatedSeason}
           onChange={handleSeasonInput}
         >
@@ -181,7 +181,7 @@ function EditGameModal({item}) {
             );
           })}
         </select>
-        <br />
+        
         <button className="btn-md" type="submit">
           OK
         </button>

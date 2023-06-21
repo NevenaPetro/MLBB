@@ -72,7 +72,7 @@ function CreateGameModal() {
         <select
           defaultValue={""}
           required
-          name="location"
+          id="location"
           onChange={handleLocationInput}
         >
           <option value="" disabled hidden>
@@ -91,7 +91,7 @@ function CreateGameModal() {
         <select
           defaultValue={""}
           required
-          name="team1"
+          id="team1"
           onChange={handleTeam1Input}
         >
           <option value="" disabled hidden>
@@ -110,7 +110,7 @@ function CreateGameModal() {
         <select
           defaultValue={""}
           required
-          name="team2"
+          id="team2"
           onChange={handleTeam2Input}
         >
           <option value="" disabled hidden>
@@ -128,7 +128,7 @@ function CreateGameModal() {
         <select
           defaultValue={""}
           required
-          name="season"
+          id="season"
           onChange={handleSeasonInput}
         >
           <option value="" disabled hidden>

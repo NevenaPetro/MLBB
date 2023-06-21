@@ -72,22 +72,22 @@ function FinishGameModal({ item }) {
         <label htmlFor="attended1">
           <input
             type="checkbox"
-            name="attended1"
+            id="attended1"
             checked={team1Attended}
             onChange={handleChange1}
           />
           Prisustvovali?
         </label>
-        <input type="number" name="team1" onChange={handleTeam1ScoreChange} />
+        <input type="number" id="team1" onChange={handleTeam1ScoreChange} />
         <input
           type="number"
-          name="team2"
+          id="team2"
           onChange={handleTeam2ScoreChange}
         />{" "}
         <label htmlFor="attended2">
           <input
             type="checkbox"
-            name="attended2"
+            id="attended2"
             checked={team2Attended}
             onChange={handleChange2}
           />

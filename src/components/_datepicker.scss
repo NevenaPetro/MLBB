@@ -1,3 +1,7 @@
+@import '../variables';
+
 .date-picker-mlbb {
-width: 200px;
+width: 100%;
+background-color: $color-canvas-primary;
+border: solid 1px red; 
 }

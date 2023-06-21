@@ -238,6 +238,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/login" element={<LoginPage />} />
           
+          
         </Routes>
 
         {deleteGameModalData && (

@@ -8,7 +8,7 @@ const DatePickerSchedule = ({ startDate, setStartDate }) => {
 
   return (
     <DatePicker
-    
+    className="date-picker-mlbb"
       selected={startDate}
       includeDateIntervals={[
         {

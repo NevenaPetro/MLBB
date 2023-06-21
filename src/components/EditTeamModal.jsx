@@ -28,7 +28,7 @@ function EditTeamModal({ item }) {
         <label htmlFor="teamName">
           <input 
             type="text"
-            name="teamName"
+            id="teamName"
             defaultValue={updatedTeamName}
             onChange={handleUpdatedTeamName}
           />
