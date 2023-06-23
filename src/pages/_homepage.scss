@@ -106,21 +106,56 @@
       }
     }
   }
+  #tabela {
+    background-color: $color-canvas-secondary;
+    padding: 20px 0;
+    .tabela-wrapper {
+      margin: 0 20px;
+      table {
+        font-size: 12px;
+        border-spacing: 0 10px;
 
-  #timovi {
-    ul {
-      list-style-type: none;
-      li {
-        width: 90%;
-        background-color: $color-canvas-secondary;
-        color: $color-brand-secondary;
-        margin: 20px auto;
-        padding: 20px;
-        box-shadow: 2px 2px 10px -2px rgba(0, 0, 0, 0.8);
+        tr:nth-child(even) {
+          background-color: $color-brand-secondary-2;
+        }
+        th {
+          padding: 0 3px;
+        }
+        td:first-child {
+          color: $color-brand-primary;
+        }
+        td {
+          text-align: center;
+          color: $color-brand-secondary;
+        }
       }
     }
   }
+  #timovi {
+    background-color: $color-canvas-primary;
+    padding: 20px 0;
+    .timovi-wrapper {
+      ul {
+        list-style-type: none;
+        li {
+          width: 90%;
+          background-color: $color-canvas-secondary;
+          color: $color-brand-secondary;
+          margin: 20px auto;
+          padding: 20px;
+          box-shadow: 2px 2px 10px -2px rgba(0, 0, 0, 0.8);
+        }
+      }
+    }
+  }
+  #media{
+    .media-wrapper{
+      background-color: $color-canvas-secondary;
+    padding: 20px 0;
+    }
+  }
   #onama {
+    background-color: $color-canvas-primary;
     padding: 20px 0;
     .onama-wrapper {
       padding: 20px;
@@ -131,6 +166,7 @@
   }
   #kontakt {
     padding: 20px 0;
+    background-color: $color-canvas-secondary;
     .kontakt-wrapper {
       padding: 20px;
       h3 {
@@ -141,6 +177,10 @@
         width: 100%;
         height: 400px;
         margin: 20px 0;
+      }
+      p {
+        color: $color-brand-secondary;
+        padding-left: 20px;
       }
     }
   }
