@@ -10,7 +10,6 @@ import PosterImg from "../assets/simple_poster.png";
 import "./_homepage.scss";
 
 function HomePage() {
-  let data = useLocation();
   const {
     games,
     seasons,
@@ -22,6 +21,7 @@ function HomePage() {
     setEditTeamModalData,
     setDeleteTeamModalData,
   } = useContext(applicationContext);
+
   const { loggedIn, checkingStatus } = useAuthStatus();
   const [selectedSeason, setSelectedSeason] = useState("15");
   const [gameDate, setGameDate] = useState(new Date());
@@ -29,12 +29,12 @@ function HomePage() {
   const [gameTeam1, setgameTeam1] = useState("");
   const [gameTeam2, setgameTeam2] = useState("");
   const [gamePlayed, setGamePlayed] = useState(false);
-  const handleSeasonSelect = (e) => {
-    e.target.value && setSelectedSeason(e.target.value);
-  };
+
   let finishedGames = games.filter((e) => e.played);
   let gamesInSeason = finishedGames.filter((e) => e.season == selectedSeason);
   let tableList = [];
+  let data = useLocation();
+
   useEffect(() => {
     let section = data.state ? data.state.section : null;
     if (section) {
@@ -48,6 +48,12 @@ function HomePage() {
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }
   });
+
+  const handleSeasonSelect = (e) => {
+    e.target.value && setSelectedSeason(e.target.value);
+    console.log(e.target.value);
+  };
+
   gamesInSeason.forEach((game) => {
     let existing1 = tableList.find((e) => e.teamId === game.team1);
     let existing2 = tableList.find((e) => e.teamId === game.team2);
@@ -154,9 +160,9 @@ function HomePage() {
             )}
         </ul>
         {loggedIn && (
-          <div className="game-buttons">
+          <div className="big-buttons">
             <button
-              className="big-buttons"
+              className="big-btn"
               onClick={() => {
                 setCreateGameModalData(1);
               }}
@@ -180,13 +186,15 @@ function HomePage() {
             )}
         </ul>
       </section>
+
       <section id="tabela">
         <h2>Tabela</h2>
         <label htmlFor="season">Sezona:</label>
-        <select defaultValue={"15"} id="season" onChange={handleSeasonSelect}>
+        <select id="season" onChange={handleSeasonSelect}>
           {seasons.map((e) => {
             return (
               <option key={e.id} value={e.id}>
+                
                 {e.name}
               </option>
             );
@@ -224,22 +232,22 @@ function HomePage() {
               <li key={e.id}>
                 <span>{e.name}</span>
                 {loggedIn && (
-                  <div className="game-buttons">
+                  <div className="big-buttons">
                     <button
-                      className="big-buttons"
+                      className="big-btn"
+                      onClick={() => {
+                        setDeleteTeamModalData(e);
+                      }}
+                    >
+                      Obriši
+                    </button>
+                    <button
+                      className="big-btn"
                       onClick={() => {
                         setEditTeamModalData(e);
                       }}
                     >
                       Izmeni
-                    </button>
-                    <button
-                      className="big-buttons"
-                      onClick={() => {
-                        setDeleteTeamModalData(e);
-                      }}
-                    >
-                      Izbriši
                     </button>
                   </div>
                 )}
@@ -247,9 +255,9 @@ function HomePage() {
             ))}
         </ul>
         {loggedIn && (
-          <div className="game-buttons">
+          <div className="big-buttons">
             <button
-              className="big-buttons"
+              className="big-btn"
               onClick={() => {
                 setCreateTeamModalData(1);
               }}

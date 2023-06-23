@@ -43,9 +43,9 @@ function GameItem({ item }) {
         </div>
 
         {loggedIn && (
-          <div className="game-buttons">
+          <div className="big-buttons">
             <button
-              className="big-buttons"
+              className="big-btn"
               onClick={() => {
                 setDeleteGameModalData(item);
               }}
@@ -53,7 +53,7 @@ function GameItem({ item }) {
               Obriši
             </button>
             <button
-              className="big-buttons"
+              className="big-btn"
               onClick={() => {
                 setEditGameModalData(item);
               }}
@@ -62,7 +62,7 @@ function GameItem({ item }) {
             </button>
             {!item.played && (
               <button
-                className="big-buttons"
+                className="big-btn"
                 onClick={() => {
                   setFinishGameModalData(item);
                 }}

@@ -1,25 +1,25 @@
 import React from "react";
 import { useEffect } from "react";
-import '../Modal/_modal.scss'
+import "../Modal/_modal.scss";
 
 function Modal({ setModalData, children }) {
-    function handleEsc(event) {
-        if (event.keyCode === 27) {
-            setModalData(null);
-        }
-      }
-      useEffect(() => {
-        window.addEventListener("keydown", handleEsc);
-        return () => {
-          window.removeEventListener("keydown", handleEsc);
-        };
-      }, []);
+  function handleEsc(event) {
+    if (event.keyCode === 27) {
+      setModalData(null);
+    }
+  }
+  useEffect(() => {
+    window.addEventListener("keydown", handleEsc);
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, []);
   return (
     <div className="modal-wrapper">
       <div
         className="modal-bg"
         onClick={() => {
-            setModalData(null);
+          setModalData(null);
         }}
       >
         <div
@@ -28,16 +28,21 @@ function Modal({ setModalData, children }) {
             event.stopPropagation();
           }}
         >
-          <button
-            className="close-btn"
-            type={"button"}
-            onClick={() => setModalData(null)}
-          >
-            X
-          </button>
+         
+            <button
+              className="close-btn"
+              type={"button"}
+              onClick={() => setModalData(null)}
+            >
+              X
+            </button>
+          
+
           {children}
-          <button
-              className="btn-md"
+          <div className="big-buttons">
+            {" "}
+            <button
+              className="big-btn"
               type="button"
               onClick={() => {
                 setModalData(null);
@@ -45,6 +50,7 @@ function Modal({ setModalData, children }) {
             >
               Odustani
             </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,14 +1,15 @@
 @import "../../_variables.scss";
 
 .modal-wrapper {
-  max-width: 100%;
-  
+  width: 100vw;
+
   .modal-bg {
     position: fixed;
     min-height: 100vh;
     width: 100%;
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.7);
-    left:  0;
+    left: 0;
     top: 0;
     display: flex;
     justify-content: center;
@@ -17,11 +18,13 @@
     z-index: 2;
     overflow-y: hidden;
     .modal {
-      background-color:$color-brand-primary-2;
+      background-color: $color-brand-primary-2;
       position: fixed;
       width: 90%;
+      height: 90%;
       min-height: 20%;
       border: none;
+
       .close-btn {
         position: absolute;
         right: 15px;
@@ -34,6 +37,7 @@
         width: 20px;
         height: 20px;
       }
+
       .close-btn:hover {
         cursor: pointer;
         background-color: #3d3935;
@@ -41,29 +45,53 @@
         transition: all 0.3s ease;
       }
       .modal-form {
-        width: 100%;
+        padding: 20px;
+
         border: none;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
-        label{
+
+        label {
           padding: 10px 0;
+          width: 100%;
         }
         input {
           background-color: transparent;
           border: none;
           padding: 10px 0;
+          border-color: #b8b0bf;
+          border-radius: 4px;
+          width: 100%;
         }
-        select{
+        select {
+          border-color: #b8b0bf;
+          border-radius: 4px;
+          width: 100%;
           background-color: transparent;
           padding: 10px 0;
           margin: 10px 0;
         }
         p {
-          
           padding: 10px 0;
+        }
+        .score-wrapper {
+          display: flex;
+          justify-content: space-between;
+          .score-sub-wrapper {
+            display: flex;
+            align-items: flex-end;
+            label {
+              select {
+                width: 40%;
+              }
+            }
+            input {
+              text-align: center;
+              font-size: 18px;
+            }
+          }
         }
       }
     }
