@@ -9,6 +9,7 @@ import TableItem from "../components/Table/TableItem";
 import PosterImg from "../assets/simple_poster.png";
 import "./_homepage.scss";
 
+
 function HomePage() {
   let data = useLocation();
 
@@ -135,13 +136,22 @@ function HomePage() {
     setTableList(tableListTemp);
   }, [games, selectedSeason]);
 
+
+  
+
   return (
     <div className="homepage-wrapper">
       <div id="welcomepage-wrapper">
         <img src={PosterImg} alt="poster" />
         <h1>
-          <span>M</span>ala <span>L</span>iga <span>B</span>ez <span>B</span>
-          riga
+          <span className="big-letter">M</span>
+          <span>ala&nbsp;</span>
+          <span className="big-letter">L</span>
+          <span>iga&nbsp;</span>
+          <span className="big-letter">B</span>
+          <span>ez&nbsp;</span>
+          <span className="big-letter">B</span>
+          <span>riga&nbsp;</span>
         </h1>
       </div>
       <section id="raspored">
@@ -171,7 +181,7 @@ function HomePage() {
         )}
       </section>
       <section id="rezultati">
-        <h2>Rezultati</h2>
+        <h2 >Rezultati</h2>
         <ul>
           {games &&
             games.map(
@@ -186,7 +196,7 @@ function HomePage() {
       </section>
       <section id="tabela">
         <div className="tabela-wrapper">
-          <h2>Tabela</h2>
+          <h2 >Tabela</h2>
           <label htmlFor="season">Sezona:</label>
           <select id="season" onChange={handleSeasonSelect}>
             {seasons.map((e) => {

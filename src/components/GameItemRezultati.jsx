@@ -23,11 +23,17 @@ function GameItem({ item }) {
         <div className="team-results">
           <div>
             <p className="team-name">{getTeamById(item.team1)} </p>
-            {item.played && <p className="team-scores">{item.scoreTeam1}</p>}
           </div>
           <span> &nbsp; : &nbsp; </span>
           <div>
             <p className="team-name"> {getTeamById(item.team2)}</p>
+          </div>
+        </div>
+        <div className="team-results">
+          <div>
+            {item.played && <p className="team-scores">{item.scoreTeam1}</p>}
+          </div>
+          <div>
             {item.played && <p className="team-scores">{item.scoreTeam2}</p>}
           </div>
         </div>

@@ -21,15 +21,23 @@ function GameItem({ item }) {
     <>
       <>
         <div className="team-names">
-          <span>{getTeamById(item.team1)} </span>
+          <div>
+            <p>{getTeamById(item.team1)} </p>
+          </div>
+
           <span> &nbsp; : &nbsp; </span>
-          <span> {getTeamById(item.team2)}</span>
+          <div>
+            <p> {getTeamById(item.team2)}</p>
+          </div>
         </div>
         <div className="game-info-raspored">
           <div>
             <span>Datum i vreme: </span>
-            <span>
-              <Moment format="L LT">{item.date}</Moment>h
+            <span className="date-time">
+              <Moment className="date-time" format="L LT">
+                {item.date}
+              </Moment>
+              h
             </span>
           </div>
           <div>
