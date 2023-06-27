@@ -9,7 +9,6 @@ import TableItem from "../components/Table/TableItem";
 import PosterImg from "../assets/simple_poster.png";
 import "./_homepage.scss";
 
-
 function HomePage() {
   let data = useLocation();
 
@@ -136,9 +135,6 @@ function HomePage() {
     setTableList(tableListTemp);
   }, [games, selectedSeason]);
 
-
-  
-
   return (
     <div className="homepage-wrapper">
       <div id="welcomepage-wrapper">
@@ -181,7 +177,7 @@ function HomePage() {
         )}
       </section>
       <section id="rezultati">
-        <h2 >Rezultati</h2>
+        <h2>Rezultati</h2>
         <ul>
           {games &&
             games.map(
@@ -196,7 +192,7 @@ function HomePage() {
       </section>
       <section id="tabela">
         <div className="tabela-wrapper">
-          <h2 >Tabela</h2>
+          <h2>Tabela</h2>
           <label htmlFor="season">Sezona:</label>
           <select id="season" onChange={handleSeasonSelect}>
             {seasons.map((e) => {
@@ -239,7 +235,7 @@ function HomePage() {
             {teams &&
               teams.map((e) => (
                 <li key={e.id}>
-                  <span>{e.name}</span>
+                  <p>{e.name}</p>
                   {loggedIn && (
                     <div className="big-buttons">
                       <button
@@ -308,26 +304,36 @@ function HomePage() {
           <p>+381 65 434 7600</p>
           <h3>Email:</h3>
           <p>5ra.bojan.petrovic@gmail.com</p>
-
-          <h3>Utakmice se održavaju na dve lokacije u Beogradu:</h3>
-          <p>1. BTC Basketball Training Center</p>
-          <p>Olimpijskih igara 14, Žarkovo, Beograd</p>
-          <iframe
-            className="contact-map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d538.1932239067459!2d20.423558727832877!3d44.76190296188467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a71da3d5fd06d%3A0xf9ce1ef300494bcc!2sBTC%20Basketball%20Training%20Center!5e1!3m2!1sen!2srs!4v1687266162511!5m2!1sen!2srs"
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-          <p>2. Osnovna škola „Jovan Ristić“</p>
-          <p>Bele Bartoka 48a, Borča, Beograd</p>
-          <iframe
-            className="contact-map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5653.7252700249755!2d20.449093207875553!3d44.87491365398277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a648433dbc4a3%3A0x61ec9d3c4114bab4!2zT3Nub3ZuYSDFoWtvbGEg4oCeSm92YW4gUmlzdGnEh-KAnA!5e1!3m2!1sen!2srs!4v1687266991291!5m2!1sen!2srs"
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
+          <p>banija003@gmail.com</p>
+          <h3>Lokacije:</h3>
+          <div className="map-wrapper">
+            <div>
+              <p>
+                1. BTC Basketball Training Center <br /> Olimpijskih igara 14,
+                Žarkovo, Beograd
+              </p>
+              <iframe
+                className="contact-map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d538.1932239067459!2d20.423558727832877!3d44.76190296188467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a71da3d5fd06d%3A0xf9ce1ef300494bcc!2sBTC%20Basketball%20Training%20Center!5e1!3m2!1sen!2srs!4v1687266162511!5m2!1sen!2srs"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div>
+              <p>
+                2. Osnovna škola „Jovan Ristić“ <br /> Bele Bartoka 48a, Borča,
+                Beograd
+              </p>
+              <iframe
+                className="contact-map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5653.7252700249755!2d20.449093207875553!3d44.87491365398277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a648433dbc4a3%3A0x61ec9d3c4114bab4!2zT3Nub3ZuYSDFoWtvbGEg4oCeSm92YW4gUmlzdGnEh-KAnA!5e1!3m2!1sen!2srs!4v1687266991291!5m2!1sen!2srs"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </section>
     </div>

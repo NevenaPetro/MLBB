@@ -38,8 +38,10 @@ function GameItem({ item }) {
           </div>
         </div>
         <div className="game-info-rezultati">
-          <span> {getLocationById(item.location)}</span>
-          <Moment format="L ">{item.date}</Moment>
+          <span> {getLocationById(item.location)}, &nbsp;</span>
+          
+            <Moment format="L ">{item.date}</Moment>
+          
         </div>
 
         {loggedIn && (
