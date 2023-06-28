@@ -5,6 +5,7 @@ import Logo from "../../assets/mlbb_logo_2.png";
 
 function Header() {
   const [active, setActive] = useState(false);
+  const [activeTab, setActiveTab] = useState(false);
   const menuIcon = "menuIcon";
   return (
     <>
@@ -29,7 +30,7 @@ function Header() {
            to={"/"}
            state={{ section: "raspored" }}
             onClick={() => {
-              setActive(!active);
+              setActiveTab(!activeTab);
             }}
           >
             Raspored
@@ -38,7 +39,7 @@ function Header() {
            to={"/"}
            state={{ section: "rezultati" }}
             onClick={() => {
-              setActive(!active);
+              setActiveTab(!activeTab);
             }}
           >
             Rezultati
@@ -47,7 +48,7 @@ function Header() {
             to={"/"}
             state={{ section: "tabela" }}
             onClick={() => {
-              setActive(!active);
+              setActiveTab(!activeTab);
             }}
           >
             Tabela
@@ -56,7 +57,7 @@ function Header() {
             to={"/"}
             state={{ section: "timovi" }}
             onClick={() => {
-              setActive(!active);
+              setActiveTab(!activeTab);
             }}
           >
             Timovi
@@ -65,7 +66,7 @@ function Header() {
             to={"/"}
             state={{ section: "media" }}
             onClick={() => {
-              setActive(!active);
+              setActiveTab(!activeTab);
             }}
           >
             Media
@@ -74,7 +75,7 @@ function Header() {
             to={"/"}
             state={{ section: "onama" }}
             onClick={() => {
-              setActive(!active);
+              setActiveTab(!activeTab);
             }}
           >
             O nama
@@ -83,7 +84,7 @@ function Header() {
             to={"/"}
             state={{ section: "kontakt" }}
             onClick={() => {
-              setActive(!active);
+              setActiveTab(!activeTab);
             }}
           >
             Kontakt

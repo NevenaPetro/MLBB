@@ -36,7 +36,7 @@
       display: block;
       width: 27px;
       height: 4px;
-      
+
       margin: 4px 0;
       -webkit-transition: all 0.4s ease-in-out;
       transition: all 0.4s ease-in-out;
@@ -59,8 +59,8 @@
     transition: 0.4s;
   }
   .navigation {
-    display: none;
-
+    visibility: hidden;
+    
     a {
       text-decoration: none;
       margin: 16px 0;
@@ -80,6 +80,7 @@
   }
 
   .navigation.menuIcon {
+    visibility: visible;
     position: absolute;
     top: 120px;
     right: 0;
@@ -92,7 +93,41 @@
     background-color: $color-canvas-primary;
     border-radius: 0px 0px 0px 15px;
     padding: 30px;
-    transition: all 2s ease;
-    
+    transition: all 1s ease;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .menu {
+    height: 60px;
+    padding-top: 0;
+
+    .hamburger {
+      display: none;
+    }
+    .navigation {
+      visibility: visible;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 20px;
+
+      a {
+        text-decoration: none;
+        margin: 10px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        border: none;
+        background-color: transparent;
+        color: $color-brand-primary;
+        &:hover {
+          cursor: pointer;
+          text-decoration-line: underline;
+          color: $color-brand-secondary;
+        }
+      }
+    }
   }
 }

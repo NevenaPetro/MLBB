@@ -66,12 +66,13 @@ function LoginPage() {
             />
           </div>
         </div>
-        <div className="game-buttons">
+        <div className="big-buttons">
           {" "}
-          <button className="big-buttons">Log in</button>
-          <Link className="forgot-password"
-          to="/forgot-password">Forgot Password?</Link>
+          <button className="big-btn">Log in</button>
         </div>
+        <Link className="forgot-password" to="/forgot-password">
+          Forgot Password?
+        </Link>
       </form>
     </div>
   );

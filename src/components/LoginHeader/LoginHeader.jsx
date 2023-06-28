@@ -18,8 +18,8 @@ function LoginHeader() {
       {loggedIn && !checkingStatus && auth.currentUser && (
         <>
           <div className="login_info">
-            <span>You are logged in:</span>
-            <span>{auth.currentUser.email}</span>
+            <p>You are logged in:</p>
+            <p>{auth.currentUser.email}</p>
           </div>
           <button type="button" onClick={onLogout}>
             Log out
