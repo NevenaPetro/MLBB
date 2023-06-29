@@ -1,19 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
+import { useAuthStatus } from "../../hooks/useAuthStatus";
 import "../Header/_header.scss";
-import Logo from "../../assets/mlbb_logo_2.png";
+
 
 function Header() {
   const [active, setActive] = useState(false);
   const [activeTab, setActiveTab] = useState(false);
   const menuIcon = "menuIcon";
+  const [isScrolled, setScrolled] = useState(false);
+  const { loggedIn, checkingStatus } = useAuthStatus();
+  const auth = getAuth();
+  const navigate = useNavigate();
+  const onLogout = () => {
+    auth.signOut();
+    navigate("/");
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, []);
+const handleScroll = () => {
+  if(window.scrollY > 250) {
+    setScrolled(true)
+  } else {
+    setScrolled(false)
+  }
+}
   return (
-    <>
-      <div className="logo">
-        <Link to="/">
-          <img src={Logo} alt="logo" />
-        </Link>
-      </div>
+    <div className={`header-container ${isScrolled && 'header-scrolled'}`}> 
+      
       <div className="menu">
         <div
           className={`hamburger ${active ? menuIcon : ""}`}
@@ -91,7 +112,20 @@ function Header() {
           </Link>
         </nav>
       </div>
-    </>
+      <div className="login-header">
+      {loggedIn && !checkingStatus && auth.currentUser && (
+        <>
+          <div className="login_info">
+            <p>You are logged in: &nbsp;</p>
+            <p>{auth.currentUser.email}</p>
+          </div>
+          <button type="button" onClick={onLogout}>
+            Log out
+          </button>
+        </>
+      )}
+    </div>
+    </div>
   );
 }
 

@@ -3,10 +3,9 @@ import { ApplicationProvider } from "./context/AplicationContext";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import HomePage from "./pages/HomePage";
-
+import Logo from "./components/Logo/Logo";
 import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
-import LoginHeader from "./components/LoginHeader/LoginHeader";
 import DeleteGameModal from "./components/DeleteGameModal";
 import EditGameModal from "./components/EditGameModal";
 import CreateGameModal from "../src/components/CreateGameModal";
@@ -14,7 +13,7 @@ import FinishGameModal from "../src/components/FinishGameModal";
 import Modal from "./components/Modal/Modal";
 import EditTeamModal from "./components/EditTeamModal";
 import CreateTeamModal from "./components/CreateTeamModal";
-import DeletTeamModal from './components/DeleteTeamModal'
+import DeletTeamModal from "./components/DeleteTeamModal";
 import {
   collection,
   getDocs,
@@ -28,7 +27,7 @@ import { db } from "./firebase.config";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import "moment/locale/sr";
-import './app.scss';
+import "./app.scss";
 
 function App() {
   const [teams, setTeams] = useState([]);
@@ -233,12 +232,11 @@ function App() {
     >
       <LocalizationProvider dateAdapter={AdapterMoment} adapterLocale="sr">
         <Header />
-        <LoginHeader />
+        <Logo />
+
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/login" element={<LoginPage />} />
-          
-          
         </Routes>
 
         {deleteGameModalData && (

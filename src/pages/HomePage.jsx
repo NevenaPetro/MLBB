@@ -138,7 +138,7 @@ function HomePage() {
   return (
     <div className="homepage-wrapper">
       <div id="welcomepage-wrapper">
-        <img src={PosterImg} alt="poster" />
+        {/*<img src={PosterImg} alt="poster" />*/}
         <h1>
           <span className="big-letter">M</span>
           <span>ala&nbsp;</span>
