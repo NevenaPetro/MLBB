@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useAuthStatus } from "../../hooks/useAuthStatus";
+import Logo from '../../components/Logo/Logo';
 import "../Header/_header.scss";
 
 
@@ -34,7 +35,7 @@ const handleScroll = () => {
 }
   return (
     <div className={`header-container ${isScrolled && 'header-scrolled'}`}> 
-      
+      <Logo></Logo>
       <div className="menu">
         <div
           className={`hamburger ${active ? menuIcon : ""}`}
@@ -116,8 +117,8 @@ const handleScroll = () => {
       {loggedIn && !checkingStatus && auth.currentUser && (
         <>
           <div className="login_info">
-            <p>You are logged in: &nbsp;</p>
-            <p>{auth.currentUser.email}</p>
+            <p>You are logged in: </p>
+            <p>&nbsp;{auth.currentUser.email}</p>
           </div>
           <button type="button" onClick={onLogout}>
             Log out

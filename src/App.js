@@ -232,7 +232,6 @@ function App() {
     >
       <LocalizationProvider dateAdapter={AdapterMoment} adapterLocale="sr">
         <Header />
-        <Logo />
 
         <Routes>
           <Route exact path="/" element={<HomePage />} />
