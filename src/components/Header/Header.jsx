@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useAuthStatus } from "../../hooks/useAuthStatus";
-import Logo from '../../components/Logo/Logo';
+import Logo from "../../assets/mlbb_logo_2.png";
 import "../Header/_header.scss";
-
 
 function Header() {
   const [active, setActive] = useState(false);
@@ -20,22 +19,24 @@ function Header() {
     navigate("/");
   };
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-        window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
-}, []);
-const handleScroll = () => {
-  if(window.scrollY > 250) {
-    setScrolled(true)
-  } else {
-    setScrolled(false)
-  }
-}
+  }, []);
+  const handleScroll = () => {
+    if (window.scrollY > 250) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
   return (
-    <div className={`header-container ${isScrolled && 'header-scrolled'}`}> 
-      <Logo></Logo>
+    <div className={`header-container ${isScrolled && "header-scrolled"}`}>
+      <div className="logo">
+        <img src={Logo} alt="logo" />
+      </div>
       <div className="menu">
         <div
           className={`hamburger ${active ? menuIcon : ""}`}
@@ -49,8 +50,8 @@ const handleScroll = () => {
         </div>
         <nav className={`navigation ${active ? menuIcon : ""}`}>
           <Link
-           to={"/"}
-           state={{ section: "raspored" }}
+            to={"/"}
+            state={{ section: "raspored" }}
             onClick={() => {
               setActiveTab(!activeTab);
             }}
@@ -58,8 +59,8 @@ const handleScroll = () => {
             Raspored
           </Link>
           <Link
-           to={"/"}
-           state={{ section: "rezultati" }}
+            to={"/"}
+            state={{ section: "rezultati" }}
             onClick={() => {
               setActiveTab(!activeTab);
             }}
@@ -114,18 +115,18 @@ const handleScroll = () => {
         </nav>
       </div>
       <div className="login-header">
-      {loggedIn && !checkingStatus && auth.currentUser && (
-        <>
-          <div className="login_info">
-            <p>You are logged in: </p>
-            <p>&nbsp;{auth.currentUser.email}</p>
-          </div>
-          <button type="button" onClick={onLogout}>
-            Log out
-          </button>
-        </>
-      )}
-    </div>
+        {loggedIn && !checkingStatus && auth.currentUser && (
+          <>
+            <div className="login_info">
+              <p>You are logged in: </p>
+              <p>&nbsp;{auth.currentUser.email}</p>
+            </div>
+            <button type="button" onClick={onLogout}>
+              Log out
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

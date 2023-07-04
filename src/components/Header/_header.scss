@@ -15,7 +15,21 @@
   position: fixed;
   width: 100%;
   z-index: 1;
-
+  .logo {
+    
+    display: flex;
+    justify-content: start;
+    position: fixed;
+    z-index: 2;
+    top: 80px;
+    left: 10px;
+    transition: all 2s;
+    img {
+      width: 100px;
+      transition: all 2s;
+      z-index: 2;
+    }
+  }
   .menu {
     color: $color-brand-primary;
     position: relative;
@@ -29,7 +43,7 @@
     .hamburger {
       position: absolute;
       top: 20px;
-      right: 40px;
+      right: 30px;
 
       transition: 0.4s;
       z-index: 2;
@@ -103,7 +117,7 @@
 
     justify-content: flex-end;
     align-items: flex-end;
-    padding: 5px 40px;
+    padding: 5px 30px;
     background-color: $color-canvas-secondary;
 
     width: 100%;
@@ -139,6 +153,13 @@
 .header-scrolled {
   height: 80px;
   margin-top: 0;
+  .logo {
+    top: 10px;
+    left: 10px;
+    img {
+      width: 50px;
+    }
+  }
   .menu {
     .hamburger {
       top: 10px;
