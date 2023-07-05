@@ -34,7 +34,7 @@ function HomePage() {
     if (section) {
       const element = document.getElementById(section);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({behavior: "smooth" });
       } else {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       }

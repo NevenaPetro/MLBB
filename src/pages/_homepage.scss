@@ -3,7 +3,7 @@
 .homepage-wrapper {
   #welcomepage-wrapper {
     position: relative;
-    height: 350px;
+    height: 700px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -282,7 +282,7 @@
 @media screen and (min-width: 425px) {
   .homepage-wrapper {
     #welcomepage-wrapper {
-      height: 620px;
+      height: 1120px;
     }
   }
 }

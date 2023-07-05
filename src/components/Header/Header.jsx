@@ -35,7 +35,16 @@ function Header() {
   return (
     <div className={`header-container ${isScrolled && "header-scrolled"}`}>
       <div className="logo">
-        <img src={Logo} alt="logo" />
+      <Link
+            to={"/"}
+            state={{ section: "welcomepage-wrapper" }}
+            onClick={() => {
+              setActiveTab(!activeTab);
+            }}
+          >
+            <img src={Logo} alt="logo" />
+          </Link>
+        
       </div>
       <div className="menu">
         <div
