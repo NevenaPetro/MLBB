@@ -6,7 +6,6 @@ import { useLocation } from "react-router-dom";
 import GameItemRaspored from "../components/GameItemRaspored";
 import GameItemRezultati from "../components/GameItemRezultati";
 import TableItem from "../components/Table/TableItem";
-import PosterImg from "../assets/simple_poster.png";
 import "./_homepage.scss";
 
 function HomePage() {
@@ -138,7 +137,7 @@ function HomePage() {
   return (
     <div className="homepage-wrapper">
       <div id="welcomepage-wrapper">
-        {/*<img src={PosterImg} alt="poster" />*/}
+        <div className="background-1"></div>
         <h1>
           <span className="big-letter">M</span>
           <span>ala&nbsp;</span>
@@ -177,6 +176,7 @@ function HomePage() {
         )}
       </section>
       <section id="rezultati">
+        <div className="background-2"></div>
         <h2>Rezultati</h2>
         <ul>
           {games &&
@@ -229,6 +229,7 @@ function HomePage() {
       </section>
       <section id="timovi">
         <div className="timovi-wrapper">
+        <div className="background-3"></div>
           <h2>Timovi</h2>
 
           <ul>

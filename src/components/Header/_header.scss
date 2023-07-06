@@ -172,6 +172,11 @@
 
 @media screen and (min-width: 768px) {
   .header-container {
+    .logo {
+      img {
+        width: 130px;
+      }
+    }
     .menu {
       .hamburger {
         display: none;

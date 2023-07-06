@@ -1,8 +1,9 @@
 @import "../variables";
 
 .login-wrapper {
-  padding: 200px 0 50px 0;
- 
+  padding: 250px 0 50px 0;
+  height: calc(100vh - 150px);
+
   form {
     background-color: $color-brand-primary;
     display: flex;

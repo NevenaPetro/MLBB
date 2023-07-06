@@ -8,12 +8,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    img {
-      opacity: 0.5;
-      width: 80%;
-      margin-left: -20px;
+    .background-1 {
+      background-image: url("../assets/Nevena_basketball_balls_orange_pale.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.4;
     }
-
     h1 {
       margin: 5px;
       position: absolute;
@@ -78,7 +83,7 @@
   }
 
   #raspored {
-    background-color: $color-canvas-secondary;
+    background-color: $color-canvas-primary;
     padding: 20px 0;
 
     ul {
@@ -128,13 +133,23 @@
     }
   }
   #rezultati {
-    background-color: $color-canvas-primary;
-
+    position: relative;
     padding: 20px 0 40px;
 
+    .background-2 {
+      background-image: url("../assets/Nevena_basketball_balls_orange_pale.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.2;
+    }
     ul {
       list-style-type: none;
-
+      
       li {
         width: 90%;
         background-color: $color-canvas-secondary;
@@ -175,7 +190,7 @@
   }
   #tabela {
     background-color: $color-canvas-secondary;
-    padding: 20px 0;
+    padding: 20px 0 50px 0;
     .tabela-wrapper {
       margin: 0 20px;
       table {
@@ -200,8 +215,19 @@
     }
   }
   #timovi {
-    background-color: $color-canvas-primary;
+    position: relative;
     padding: 20px 0;
+    .background-3 {
+      background-image: url("../assets/Nevena_basketball_balls_orange_pale.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.3;
+    }
     .timovi-wrapper {
       ul {
         list-style-type: none;
@@ -228,7 +254,6 @@
   #media {
     background-color: $color-canvas-secondary;
     .media-wrapper {
-      
       padding: 20px 0;
     }
   }
@@ -293,14 +318,14 @@
       height: 820px;
       align-items: flex-start;
       justify-content: flex-start;
-      margin-left: 50px;
-      img {
-        height: 530px;
-        width: 530px;
-      }
+
       h1 {
         align-self: center;
-        top: 300px;
+        top: 400px;
+        font-size: 30px;
+        .big-letter {
+          font-size: 80px;
+        }
       }
     }
   }

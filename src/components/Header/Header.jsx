@@ -7,7 +7,7 @@ import Logo from "../../assets/mlbb_logo_2.png";
 import "../Header/_header.scss";
 
 function Header() {
-  const [active, setActive] = useState(false);
+  const [activeHamburger, setActiveHamburger] = useState(false);
   const [activeTab, setActiveTab] = useState(false);
   const menuIcon = "menuIcon";
   const [isScrolled, setScrolled] = useState(false);
@@ -48,21 +48,22 @@ function Header() {
       </div>
       <div className="menu">
         <div
-          className={`hamburger ${active ? menuIcon : ""}`}
+          className={`hamburger ${activeHamburger ? menuIcon : ""}`}
           onClick={() => {
-            setActive(!active);
+            setActiveHamburger(!activeHamburger);
           }}
         >
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
         </div>
-        <nav className={`navigation ${active ? menuIcon : ""}`}>
+        <nav className={`navigation ${activeHamburger ? menuIcon : ""}`}>
           <Link
             to={"/"}
             state={{ section: "raspored" }}
             onClick={() => {
               setActiveTab(!activeTab);
+              setActiveHamburger(false);
             }}
           >
             Raspored
@@ -72,6 +73,7 @@ function Header() {
             state={{ section: "rezultati" }}
             onClick={() => {
               setActiveTab(!activeTab);
+              setActiveHamburger(false);
             }}
           >
             Rezultati
@@ -81,6 +83,7 @@ function Header() {
             state={{ section: "tabela" }}
             onClick={() => {
               setActiveTab(!activeTab);
+              setActiveHamburger(false);
             }}
           >
             Tabela
@@ -90,6 +93,7 @@ function Header() {
             state={{ section: "timovi" }}
             onClick={() => {
               setActiveTab(!activeTab);
+              setActiveHamburger(false);
             }}
           >
             Timovi
@@ -99,6 +103,7 @@ function Header() {
             state={{ section: "media" }}
             onClick={() => {
               setActiveTab(!activeTab);
+              setActiveHamburger(false);
             }}
           >
             Media
@@ -108,6 +113,7 @@ function Header() {
             state={{ section: "onama" }}
             onClick={() => {
               setActiveTab(!activeTab);
+              setActiveHamburger(false);
             }}
           >
             O nama
@@ -117,6 +123,7 @@ function Header() {
             state={{ section: "kontakt" }}
             onClick={() => {
               setActiveTab(!activeTab);
+              setActiveHamburger(false);
             }}
           >
             Kontakt
