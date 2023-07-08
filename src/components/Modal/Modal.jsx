@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import "../Modal/_modal.scss";
+import CloseIcon from '@mui/icons-material/Close';
 
 function Modal({ setModalData, children }) {
   function handleEsc(event) {
@@ -34,7 +35,7 @@ function Modal({ setModalData, children }) {
               type={"button"}
               onClick={() => setModalData(null)}
             >
-              X
+              <CloseIcon />
             </button>
           
 
@@ -42,7 +43,7 @@ function Modal({ setModalData, children }) {
           <div className="big-buttons">
             {" "}
             <button
-              className="big-btn"
+              className="big-btn can"
               type="button"
               onClick={() => {
                 setModalData(null);

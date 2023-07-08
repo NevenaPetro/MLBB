@@ -1,7 +1,9 @@
 @import "../../_variables.scss";
 
 .modal-wrapper {
+  position: relative;
   width: 100vw;
+  z-index: 5;
 
   .modal-bg {
     position: fixed;
@@ -18,26 +20,26 @@
     z-index: 2;
     overflow-y: hidden;
     .modal {
-      background-color: $color-brand-primary-2;
+      background-color: $color-canvas-secondary;
       position: fixed;
       width: 90%;
-      height: 90%;
-      min-height: 20%;
+      min-height: 50%;
       border: none;
-
+      padding-bottom: 20px;
       .close-btn {
         position: absolute;
         right: 15px;
         top: 15px;
         border: none;
-        color: #00a0df;
-        background-color: #eaeaea;
-        border-radius: 20px;
-        font-weight: 700;
+        color: $color-brand-primary;
+        background-color: $color-canvas-secondary;
         width: 20px;
         height: 20px;
       }
-
+      .can {
+        background-color: $color-canvas-primary;
+        color: $color-brand-primary;
+      }
       .close-btn:hover {
         cursor: pointer;
         background-color: #3d3935;
@@ -45,7 +47,7 @@
         transition: all 0.3s ease;
       }
       .modal-form {
-        padding: 20px;
+        padding: 20px 20px 0 20px;
 
         border: none;
         display: flex;
@@ -79,17 +81,27 @@
         .score-wrapper {
           display: flex;
           justify-content: space-between;
+          align-items: center;
           .score-sub-wrapper {
             display: flex;
-            align-items: flex-end;
-            label {
-              select {
-                width: 40%;
+            flex-direction: column;
+            width: 40%;
+            .score-sub-sub-wrapper {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              label {
+                padding: 0;
+
+                select {
+                  width: 40%;
+                }
               }
-            }
-            input {
-              text-align: center;
-              font-size: 18px;
+              input {
+                text-align: center;
+                font-size: 18px;
+                padding: 0;
+              }
             }
           }
         }

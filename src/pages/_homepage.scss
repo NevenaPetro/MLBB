@@ -146,10 +146,12 @@
       bottom: 0px;
       left: 0px;
       opacity: 0.2;
+      z-index: 0;
     }
     ul {
       list-style-type: none;
-      
+      position: relative;
+      z-index: 2;
       li {
         width: 90%;
         background-color: $color-canvas-secondary;
@@ -227,9 +229,13 @@
       bottom: 0px;
       left: 0px;
       opacity: 0.3;
+      
     }
     .timovi-wrapper {
+      
       ul {
+        position: relative;
+      z-index: 2;
         list-style-type: none;
         display: flex;
         flex-wrap: wrap;

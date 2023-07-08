@@ -33,7 +33,7 @@ function HomePage() {
     if (section) {
       const element = document.getElementById(section);
       if (element) {
-        element.scrollIntoView({behavior: "smooth" });
+        element.scrollIntoView({ behavior: "smooth" });
       } else {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       }
@@ -229,7 +229,7 @@ function HomePage() {
       </section>
       <section id="timovi">
         <div className="timovi-wrapper">
-        <div className="background-3"></div>
+          <div className="background-3"></div>
           <h2>Timovi</h2>
 
           <ul>

@@ -102,84 +102,91 @@ function EditGameModal({ item }) {
           </select>
         </label>
         <div className="score-wrapper">
-          <label htmlFor="team1">
-            Tim 1:
-            <br />
-            <select
-              defaultValue={updatedTeam1}
-              id="team1"
-              onChange={handleTeam1Input}
-            >
-              {teams.map((e) => {
-                return (
-                  <option key={e.id} value={e.id}>
-                    {e.name}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
+          <div className="score-sub-wrapper">
+            <label htmlFor="team1">
+              Tim 1:
+              <br />
+              <select
+                defaultValue={updatedTeam1}
+                id="team1"
+                onChange={handleTeam1Input}
+              >
+                {teams.map((e) => {
+                  return (
+                    <option key={e.id} value={e.id}>
+                      {e.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </label>
 
-          {item.played && (
-            <>
-              <div className="score-sub-wrapper">
-                <label htmlFor="team1score">
-                  <input
-                    type="number"
-                    id="team1score"
-                    defaultValue={updatedTeam1Score}
-                    onChange={handleUpdatedTeam1ScoreChange}
-                  />
-                </label>
-                <label htmlFor="attended1">
-                  <input
-                    type="checkbox"
-                    id="attended1"
-                    checked={updatedTeam1Presence}
-                    onChange={handleUpdatedTeam1PresenceChange}
-                  />
-                </label>
-              </div>
-
-              <span> : </span>
-              <div className="score-sub-wrapper">
-                {" "}
-                <label htmlFor="attended2">
-                  <input
-                    type="checkbox"
-                    id="attended2"
-                    checked={updatedTeam2Presence}
-                    onChange={handleUpdatedTeam2PresenceChange}
-                  />
-                </label>
-                <label htmlFor="team2score">
-                  <input
-                    type="number"
-                    id="team2score"
-                    defaultValue={updatedTeam2Score}
-                    onChange={handleUpdatedTeam2ScoreChange}
-                  />
-                </label>
-              </div>
-            </>
-          )}
-          <label htmlFor="team2">
-            Tim 2:
-            <br />
-            <select
-              defaultValue={updatedTeam2}
-              id="team2"
-              onChange={handleTeam2Input}
-            >
-              {teams.map((e) => {
-                return (
-                  <option key={e.id} value={e.id}>
-                    {e.name}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
+            {item.played && (
+              <>
+                <div className="score-sub-sub-wrapper">
+                  <label htmlFor="team1score">
+                    <input
+                      type="number"
+                      id="team1score"
+                      defaultValue={updatedTeam1Score}
+                      onChange={handleUpdatedTeam1ScoreChange}
+                    />
+                  </label>
+                  <label htmlFor="attended1">
+                    <input
+                      type="checkbox"
+                      id="attended1"
+                      checked={updatedTeam1Presence}
+                      onChange={handleUpdatedTeam1PresenceChange}
+                    />
+                  </label>
+                </div>
+              </>
+            )}
+          </div>
+          <span> : </span>
+          <div className="score-sub-wrapper">
+            <label htmlFor="team2">
+              Tim 2:
+              <br />
+              <select
+                defaultValue={updatedTeam2}
+                id="team2"
+                onChange={handleTeam2Input}
+              >
+                {teams.map((e) => {
+                  return (
+                    <option key={e.id} value={e.id}>
+                      {e.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </label>
+            {item.played && (
+              <>
+                <div className="score-sub-sub-wrapper">
+                  {" "}
+                  <label htmlFor="attended2">
+                    <input
+                      type="checkbox"
+                      id="attended2"
+                      checked={updatedTeam2Presence}
+                      onChange={handleUpdatedTeam2PresenceChange}
+                    />
+                  </label>
+                  <label htmlFor="team2score">
+                    <input
+                      type="number"
+                      id="team2score"
+                      defaultValue={updatedTeam2Score}
+                      onChange={handleUpdatedTeam2ScoreChange}
+                    />
+                  </label>
+                </div>
+              </>
+            )}
+          </div>
         </div>
         <label htmlFor="season">
           Sezona:

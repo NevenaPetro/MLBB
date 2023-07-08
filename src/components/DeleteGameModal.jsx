@@ -6,9 +6,9 @@ import '../components/Modal/_modal.scss';
 function DeleteGameModal({ item }) {
   const { setDeleteGameModalData, deleteGame } = useContext(applicationContext);
   return (
-    <>
+    <div className="big-buttons">
       <button
-        className="btn-md"
+        className="big-btn"
         type="button"
         onClick={() => {
           deleteGame(item);
@@ -18,7 +18,7 @@ function DeleteGameModal({ item }) {
         Obriši
       </button>
   
-    </>
+    </div>
   );
 }
 
