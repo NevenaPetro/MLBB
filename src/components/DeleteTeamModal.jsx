@@ -6,9 +6,10 @@ import '../components/Modal/_modal.scss';
 function DeleteTeamModal({ item }) {
   const { setDeleteTeamModalData, deleteTeam } = useContext(applicationContext);
   return (
-    <>
+    <div className="big-buttons modal-form">
+      <p>Želiš da obrišeš ovaj tim?</p>
       <button
-        className="btn-md"
+        className="big-btn"
         type="button"
         onClick={() => {
             deleteTeam(item);
@@ -18,7 +19,7 @@ function DeleteTeamModal({ item }) {
         Obriši
       </button>
   
-    </>
+    </div>
   );
 }
 

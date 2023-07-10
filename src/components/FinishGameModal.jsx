@@ -1,13 +1,10 @@
 import React, { useState, useContext } from "react";
 import { applicationContext } from "../../src/context/AplicationContext";
 
-import '../components/Modal/_modal.scss';
+import "../components/Modal/_modal.scss";
 function FinishGameModal({ item }) {
-  const {
-    setFinishGameModalData,
-    updateGame,
-    getTeamById,
-  } = useContext(applicationContext);
+  const { setFinishGameModalData, updateGame, getTeamById } =
+    useContext(applicationContext);
 
   const [team1Score, setTeam1Score] = useState(0);
   const [team2Score, setTeam2Score] = useState(0);
@@ -67,37 +64,51 @@ function FinishGameModal({ item }) {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form className="modal-form" onSubmit={onSubmit}>
+        <p>Tim 1:</p>
         <label htmlFor="team1">{getTeamById(item.team1)}</label>
-        <label htmlFor="attended1">
+        <label htmlFor="attended1" className="score-wrapper">
+          <span>Prisustvovali?</span>
           <input
             type="checkbox"
             id="attended1"
             checked={team1Attended}
             onChange={handleChange1}
           />
-          Prisustvovali?
         </label>
-        <input type="number" id="team1" onChange={handleTeam1ScoreChange} />
         <input
+          className="input-style"
           type="number"
-          id="team2"
-          onChange={handleTeam2ScoreChange}
-        />{" "}
-        <label htmlFor="attended2">
+          id="team1"
+          onChange={handleTeam1ScoreChange}
+          placeholder="upiši rezultat 1"
+        />
+        <br /> <br />
+        <p>Tim 2:</p>
+        <label htmlFor="team2">{getTeamById(item.team2)}</label>
+        <label htmlFor="attended2" className="score-wrapper">
+          <span>Prisustvovali?</span>
           <input
             type="checkbox"
             id="attended2"
             checked={team2Attended}
             onChange={handleChange2}
           />
-          Prisustvovali?
         </label>
-        <label htmlFor="team2">{getTeamById(item.team2)}</label>
+        <input
+          className="input-style"
+          type="number"
+          id="team2"
+          onChange={handleTeam2ScoreChange}
+          placeholder="upiši rezultat 2"
+        />{" "}
         <br />
-        <button className="btn-md" type="submit">
-          OK
-        </button>
+        <br />
+        <div className="big-buttons">
+          <button className="big-btn" type="submit">
+            Snimi rezultat
+          </button>
+        </div>
       </form>
     </>
   );

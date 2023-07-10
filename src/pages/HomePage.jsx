@@ -242,18 +242,18 @@ function HomePage() {
                       <button
                         className="big-btn"
                         onClick={() => {
-                          setEditTeamModalData(e);
+                          setDeleteTeamModalData(e);
                         }}
                       >
-                        Izmeni
+                        Obriši
                       </button>
                       <button
                         className="big-btn"
                         onClick={() => {
-                          setDeleteTeamModalData(e);
+                          setEditTeamModalData(e);
                         }}
                       >
-                        Izbriši
+                        Izmeni
                       </button>
                     </div>
                   )}

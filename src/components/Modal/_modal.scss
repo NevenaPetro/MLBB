@@ -23,9 +23,10 @@
       background-color: $color-canvas-secondary;
       position: fixed;
       width: 90%;
-      min-height: 50%;
+      min-height: 30%;
       border: none;
       padding-bottom: 20px;
+
       .close-btn {
         position: absolute;
         right: 15px;
@@ -47,7 +48,7 @@
         transition: all 0.3s ease;
       }
       .modal-form {
-        padding: 20px 20px 0 20px;
+        padding: 30px 20px 0 20px;
 
         border: none;
         display: flex;
@@ -66,6 +67,7 @@
           border-color: #b8b0bf;
           border-radius: 4px;
           width: 100%;
+          text-align: center;
         }
         select {
           border-color: #b8b0bf;
@@ -77,6 +79,7 @@
         }
         p {
           padding: 10px 0;
+          text-align: center;
         }
         .score-wrapper {
           display: flex;
@@ -104,6 +107,11 @@
               }
             }
           }
+        }
+        .input-style {
+          padding: 10px 0 10px 10px;
+          border: 1px #b8b0bf solid;
+          border-radius: 4px;
         }
       }
     }

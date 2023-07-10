@@ -126,6 +126,7 @@ function EditGameModal({ item }) {
                 <div className="score-sub-sub-wrapper">
                   <label htmlFor="team1score">
                     <input
+                    className="input-style"
                       type="number"
                       id="team1score"
                       defaultValue={updatedTeam1Score}
@@ -177,6 +178,7 @@ function EditGameModal({ item }) {
                   </label>
                   <label htmlFor="team2score">
                     <input
+                    className="input-style"
                       type="number"
                       id="team2score"
                       defaultValue={updatedTeam2Score}

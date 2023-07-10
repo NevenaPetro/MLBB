@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useContext } from "react";
 import { applicationContext } from "../context/AplicationContext";
-import '../components/Modal/_modal.scss';
+import "../components/Modal/_modal.scss";
 
 function EditTeamModal({ item }) {
   const { setEditTeamModalData, updateTeam } = useContext(applicationContext);
@@ -23,19 +23,22 @@ function EditTeamModal({ item }) {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <p>Ime:</p>
+      <form onSubmit={onSubmit} className="modal-form">
+        <p>Izmeni ime tima:</p>
         <label htmlFor="teamName">
-          <input 
+          <input
+            className="input-style"
             type="text"
             id="teamName"
             defaultValue={updatedTeamName}
             onChange={handleUpdatedTeamName}
           />
         </label>
-        <button className="btn-md" type="submit">
-          OK
-        </button>
+        <div className="big-buttons">
+          <button className="big-btn" type="submit">
+            OK
+          </button>
+        </div>
       </form>
     </>
   );
