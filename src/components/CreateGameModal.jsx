@@ -4,7 +4,7 @@ import { applicationContext } from "../../src/context/AplicationContext";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { Stack, TextField } from "@mui/material";
 import moment from "moment";
-import '../components/Modal/_modal.scss';
+import "../components/Modal/_modal.scss";
 
 function CreateGameModal() {
   const {
@@ -57,7 +57,7 @@ function CreateGameModal() {
   };
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form className="modal-form" onSubmit={onSubmit}>
         <p>Datum i vreme:</p>
         <Stack>
           <DateTimePicker
@@ -143,7 +143,10 @@ function CreateGameModal() {
           })}
         </select>
         <br />
-        <button type="submit">Kreiraj</button>
+        <div className="big-buttons"></div>
+        <button className="big-btn" type="submit">
+          Kreiraj
+        </button>
       </form>
     </>
   );

@@ -170,7 +170,7 @@ function HomePage() {
                 setCreateGameModalData(1);
               }}
             >
-              Kreiraj novu utakmicu:
+              Zakaži novu utakmicu:
             </button>
           </div>
         )}
@@ -261,15 +261,17 @@ function HomePage() {
               ))}
           </ul>
           {loggedIn && (
-            <div className="big-buttons">
-              <button
-                className="big-btn"
-                onClick={() => {
-                  setCreateTeamModalData(1);
-                }}
-              >
-                Kreiraj novi tim
-              </button>
+            <div className="in-front-from-background">
+              <div className="big-buttons">
+                <button
+                  className="big-btn"
+                  onClick={() => {
+                    setCreateTeamModalData(1);
+                  }}
+                >
+                  Kreiraj novi tim
+                </button>
+              </div>
             </div>
           )}
         </div>

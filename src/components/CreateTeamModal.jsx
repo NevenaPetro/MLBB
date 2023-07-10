@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useContext } from "react";
 import { applicationContext } from "../../src/context/AplicationContext";
-import '../components/Modal/_modal.scss';
+import "../components/Modal/_modal.scss";
 
 function CreateTeamModal() {
   const { createNewTeam, setCreateTeamModalData } =
@@ -24,18 +24,22 @@ function CreateTeamModal() {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form className="modal-form" onSubmit={onSubmit}>
         <p>Ime:</p>
         <label htmlFor="createTeamName">
           <input
+            className="input-style"
             type="text"
             id="createTeamName"
             defaultValue={teamName}
             onChange={handleCreatedTeamName}
           />
         </label>
-
-        <button type="submit">Kreiraj</button>
+        <div className="big-buttons">
+          <button className="big-btn" type="submit">
+            Kreiraj
+          </button>
+        </div>
       </form>
     </>
   );

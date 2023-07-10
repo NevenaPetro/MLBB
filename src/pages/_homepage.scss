@@ -255,6 +255,10 @@
           }
         }
       }
+      .in-front-from-background{
+        position: relative;
+        z-index: 2;
+      }
     }
   }
   #media {
