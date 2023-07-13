@@ -8,6 +8,7 @@ function DeleteGameModal({ item }) {
   return (
     <div className="big-buttons modal-form">
       <p>Da li želiš da obrišeš utakmicu?</p>
+      <br /> 
       <button
         className="big-btn"
         type="button"

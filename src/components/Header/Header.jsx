@@ -134,11 +134,11 @@ function Header() {
         {loggedIn && !checkingStatus && auth.currentUser && (
           <>
             <div className="login_info">
-              <p>You are logged in: </p>
+              <p>Ulogovani ste: </p>
               <p>&nbsp;{auth.currentUser.email}</p>
             </div>
             <button type="button" onClick={onLogout}>
-              Log out
+              Izloguj se
             </button>
           </>
         )}

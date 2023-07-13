@@ -22,7 +22,7 @@
     .modal {
       background-color: $color-canvas-secondary;
       position: fixed;
-      width: 90%;
+      max-width: 90%;
       min-height: 30%;
       border: none;
       padding-bottom: 20px;
@@ -80,6 +80,7 @@
         p {
           padding: 10px 0;
           text-align: center;
+          
         }
         .score-wrapper {
           display: flex;

@@ -297,6 +297,17 @@ function HomePage() {
             modi aliquid! Eum, consequatur, aliquid neque dolore rerum cum, quis
             consequuntur ullam optio laudantium nesciunt voluptas sint?
           </p>
+          <br />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ullam
+            ab iste optio eum eligendi distinctio laborum atque ea commodi modi
+            consectetur, quasi ipsa id dolorum rem explicabo? Impedit porro
+            velit maxime labore sed inventore rem nobis architecto illum,
+            voluptates modi magnam, nam et! Nihil modi voluptates, eum, quos
+            nesciunt commodi ratione sequi, quas mollitia ut labore dignissimos.
+            Quo quisquam eligendi nostrum voluptatem modi tempore suscipit.
+            Itaque nam minus eaque optio.
+          </p>
         </div>
       </section>
       <section id="kontakt">
