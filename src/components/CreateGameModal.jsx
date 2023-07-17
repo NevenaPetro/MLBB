@@ -143,10 +143,11 @@ function CreateGameModal() {
           })}
         </select>
         <br />
-        <div className="big-buttons"></div>
-        <button className="big-btn" type="submit">
-          Kreiraj
-        </button>
+        <div className="big-buttons">
+          <button className="big-btn" type="submit">
+            Kreiraj
+          </button>
+        </div>
       </form>
     </>
   );

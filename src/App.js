@@ -59,6 +59,17 @@ function App() {
             name: doc.data().name,
           });
         });
+        teams.sort((a, b) => {
+          const teamA = a.name.toUpperCase();
+          const teamB = b.name.toUpperCase();
+          if (teamA < teamB) {
+            return -1;
+          }
+          if (teamA > teamB) {
+            return 1;
+          }
+          return 0;
+        });
         setTeams(teams);
       } catch (error) {}
     };
@@ -78,6 +89,7 @@ function App() {
             name: doc.data().name,
           });
         });
+
         setLocations(locations);
       } catch (error) {}
     };
@@ -104,6 +116,17 @@ function App() {
             presenceTeam1: doc.data().presenceTeam1,
             presenceTeam2: doc.data().presenceTeam2,
           });
+        });
+        teams.sort((a, b) => {
+          const teamA = a.name.toUpperCase();
+          const teamB = b.name.toUpperCase();
+          if (teamA < teamB) {
+            return -1;
+          }
+          if (teamA > teamB) {
+            return 1;
+          }
+          return 0;
         });
         setGames(games);
       } catch (error) {}
