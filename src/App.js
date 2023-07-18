@@ -59,17 +59,7 @@ function App() {
             name: doc.data().name,
           });
         });
-        teams.sort((a, b) => {
-          const teamA = a.name.toUpperCase();
-          const teamB = b.name.toUpperCase();
-          if (teamA < teamB) {
-            return -1;
-          }
-          if (teamA > teamB) {
-            return 1;
-          }
-          return 0;
-        });
+        teams.sort((a, b) => a.name.toUpperCase() - b.name.toUpperCase());
         setTeams(teams);
       } catch (error) {}
     };
@@ -117,17 +107,7 @@ function App() {
             presenceTeam2: doc.data().presenceTeam2,
           });
         });
-        teams.sort((a, b) => {
-          const teamA = a.name.toUpperCase();
-          const teamB = b.name.toUpperCase();
-          if (teamA < teamB) {
-            return -1;
-          }
-          if (teamA > teamB) {
-            return 1;
-          }
-          return 0;
-        });
+        games.sort((a, b) => a.date - b.date);
         setGames(games);
       } catch (error) {}
     };
