@@ -7,6 +7,7 @@ import GameItemRaspored from "../components/GameItemRaspored";
 import GameItemRezultati from "../components/GameItemRezultati";
 import TableItem from "../components/Table/TableItem";
 import "./_homepage.scss";
+import { SearchSharp } from "@mui/icons-material";
 
 function HomePage() {
   let data = useLocation();
@@ -42,8 +43,12 @@ function HomePage() {
     }
   });
 
+
+  /*Puts last season to be selected when page is loaded*/
   useEffect(() => {
-    const seasonNow = seasons && seasons.find((s) => s.name === "15");
+    const seasonNow = 
+      seasons &&
+      seasons[seasons.length - 1];
     seasonNow && setSelectedSeason(seasonNow.id);
   }, [seasons]);
 
@@ -193,16 +198,13 @@ function HomePage() {
       <section id="tabela">
         <div className="tabela-wrapper">
           <h2>Tabela</h2>
-          <label htmlFor="season">Sezona:</label>
-          <select id="season" onChange={handleSeasonSelect}>
             {seasons.map((e) => {
               return (
-                <option key={e.id} value={e.id}>
+                <button className="season-btn" key={e.id} value={e.id} onClick={handleSeasonSelect}>
                   {e.name}
-                </option>
+                </button>
               );
             })}
-          </select>
 
           <table>
             <tbody>

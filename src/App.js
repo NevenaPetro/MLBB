@@ -127,6 +127,7 @@ function App() {
             name: doc.data().name,
           });
         });
+        seasons.sort((a, b) => +a.name - +b.name);
         setSeasons(seasons);
       } catch (error) {}
     };
