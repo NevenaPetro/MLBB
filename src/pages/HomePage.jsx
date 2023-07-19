@@ -43,12 +43,9 @@ function HomePage() {
     }
   });
 
-
   /*Puts last season to be selected when page is loaded*/
   useEffect(() => {
-    const seasonNow = 
-      seasons &&
-      seasons[seasons.length - 1];
+    const seasonNow = seasons && seasons[seasons.length - 1];
     seasonNow && setSelectedSeason(seasonNow.id);
   }, [seasons]);
 
@@ -198,13 +195,18 @@ function HomePage() {
       <section id="tabela">
         <div className="tabela-wrapper">
           <h2>Tabela</h2>
-            {seasons.map((e) => {
-              return (
-                <button className="season-btn" key={e.id} value={e.id} onClick={handleSeasonSelect}>
-                  {e.name}
-                </button>
-              );
-            })}
+          {seasons.map((e) => {
+            return (
+              <button
+                className={`season-btn ${(selectedSeason === e.id) && "season-selected"}`}
+                key={e.id}
+                value={e.id}
+                onClick={handleSeasonSelect}
+              >
+                {e.name}
+              </button>
+            );
+          })}
 
           <table>
             <tbody>
