@@ -138,7 +138,7 @@ function Header() {
               <p>&nbsp;{auth.currentUser.email}</p>
             </div>
             <button type="button" onClick={onLogout}>
-              Izloguj se
+              Odjavi se
             </button>
           </>
         )}

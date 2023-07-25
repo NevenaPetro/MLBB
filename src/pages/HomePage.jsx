@@ -8,6 +8,9 @@ import GameItemRezultati from "../components/GameItemRezultati";
 import TableItem from "../components/Table/TableItem";
 import "./_homepage.scss";
 import { SearchSharp } from "@mui/icons-material";
+import { storage } from "../firebase.config";
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 
 function HomePage() {
   let data = useLocation();
@@ -24,22 +27,62 @@ function HomePage() {
   const { loggedIn, checkingStatus } = useAuthStatus();
   const [selectedSeason, setSelectedSeason] = useState(0);
   const [tableList, setTableList] = useState([]);
+  const [imageToUpload, setImageToUpload] = useState(null);
+  const [imageList, setImageList] = useState([]);
+  const imageListRef = ref(storage, "images/");
 
   const handleSeasonSelect = (e) => {
     e.target.value && setSelectedSeason(e.target.value);
   };
 
+  const uploadImage = () => {
+    if (imageToUpload == null) return;
+    const imageRef = ref(storage, `images/${imageToUpload.name + v4()}`);
+    uploadBytes(imageRef, imageToUpload).then(() => {
+      alert("Image uploaded");
+    });
+  };
+
+  useEffect(() => {
+    listAll(imageListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageList((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScrollMain, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollMain);
+    };
+  }, []);
+
+  const handleScrollMain = (e) => {};
+
   useEffect(() => {
     let section = data.state ? data.state.section : null;
+
     if (section) {
       const element = document.getElementById(section);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       } else {
-        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
       }
     } else {
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
     }
   });
 
@@ -198,7 +241,9 @@ function HomePage() {
           {seasons.map((e) => {
             return (
               <button
-                className={`season-btn ${(selectedSeason === e.id) && "season-selected"}`}
+                className={`season-btn ${
+                  selectedSeason === e.id && "season-selected"
+                }`}
                 key={e.id}
                 value={e.id}
                 onClick={handleSeasonSelect}
@@ -283,6 +328,29 @@ function HomePage() {
       <section id="media">
         <div className="media-wrapper">
           <h2>Media</h2>
+          {loggedIn && (
+            <>
+              <div className="big-buttons">
+                <input
+                  className="big-btn"
+                  type="file"
+                  onChange={(event) => {
+                    setImageToUpload(event.target.files[0]);
+                  }}
+                />
+              </div>
+
+              <div className="big-buttons">
+                <button className="big-btn" onClick={uploadImage}>
+                  Ubaci sliku/video
+                </button>
+              </div>
+            </>
+          )}
+          {imageList.map((url) => {
+            console.log(imageList);
+            return <img src={url} />;
+          })}
         </div>
       </section>
       <section id="onama">
