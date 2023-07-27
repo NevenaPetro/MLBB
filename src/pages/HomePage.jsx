@@ -30,6 +30,7 @@ function HomePage() {
   const [imageToUpload, setImageToUpload] = useState(null);
   const [imageList, setImageList] = useState([]);
   const imageListRef = ref(storage, "images/");
+  console.log(imageListRef);
 
   const handleSeasonSelect = (e) => {
     e.target.value && setSelectedSeason(e.target.value);
@@ -38,8 +39,10 @@ function HomePage() {
   const uploadImage = () => {
     if (imageToUpload == null) return;
     const imageRef = ref(storage, `images/${imageToUpload.name + v4()}`);
-    uploadBytes(imageRef, imageToUpload).then(() => {
-      alert("Image uploaded");
+    uploadBytes(imageRef, imageToUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageList((prev) => [...prev, url]);
+      });
     });
   };
 
@@ -62,7 +65,6 @@ function HomePage() {
   }, []);
 
   const handleScrollMain = (e) => {};
-
   useEffect(() => {
     let section = data.state ? data.state.section : null;
 
@@ -178,6 +180,7 @@ function HomePage() {
     tableListTemp.sort((a, b) => b.points - a.points);
     setTableList(tableListTemp);
   }, [games, selectedSeason]);
+  console.log(imageList);
 
   return (
     <div className="homepage-wrapper">
@@ -328,29 +331,33 @@ function HomePage() {
       <section id="media">
         <div className="media-wrapper">
           <h2>Media</h2>
-          {loggedIn && (
-            <>
-              <div className="big-buttons">
-                <input
-                  className="big-btn"
-                  type="file"
-                  onChange={(event) => {
-                    setImageToUpload(event.target.files[0]);
-                  }}
-                />
-              </div>
-
-              <div className="big-buttons">
-                <button className="big-btn" onClick={uploadImage}>
-                  Ubaci sliku/video
-                </button>
-              </div>
-            </>
-          )}
-          {imageList.map((url) => {
-            console.log(imageList);
-            return <img src={url} />;
-          })}
+          <div className="images">
+            {imageList &&
+              imageList.map((url) => (
+                <>
+                  <img key={url} src={url} />
+                </>
+              ))}
+          </div>
+          <div className="input-choose-file-wrapper">
+            {loggedIn && (
+              <>
+                <div className="input-choose-file">
+                  <input
+                    type="file"
+                    onChange={(event) => {
+                      setImageToUpload(event.target.files[0]);
+                    }}
+                  />
+                </div>
+                <div className="big-buttons">
+                  <button className="big-btn" onClick={uploadImage}>
+                    Ubaci sliku/video
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </section>
       <section id="onama">

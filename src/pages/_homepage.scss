@@ -291,9 +291,37 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      img {
-        width: 280px;
-        padding-bottom: 10px;
+      .images{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 280px;
+          margin: 10px;
+        }
+      }
+     
+      .input-choose-file-wrapper {
+        .input-choose-file {
+          background-color: $color-canvas-primary;
+          border: none;
+          height: 40px;
+          width: 280px;
+
+          input[type="file"]::file-selector-button {
+            background-color: $color-brand-secondary;
+            border: none;
+            margin: 12px;
+            font-family: "Russo One", sans-serif;
+            color: $color-text-primary-2;
+            font-size: 14px;
+           
+          }
+          input[type="file"]::file-selector-button:hover {
+            background-color: $color-brand-primary;
+          }
+        }
       }
     }
   }
