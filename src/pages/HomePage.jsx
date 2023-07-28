@@ -30,7 +30,6 @@ function HomePage() {
   const [imageToUpload, setImageToUpload] = useState(null);
   const [imageList, setImageList] = useState([]);
   const imageListRef = ref(storage, "images/");
-  console.log(imageListRef);
 
   const handleSeasonSelect = (e) => {
     e.target.value && setSelectedSeason(e.target.value);
@@ -180,7 +179,6 @@ function HomePage() {
     tableListTemp.sort((a, b) => b.points - a.points);
     setTableList(tableListTemp);
   }, [games, selectedSeason]);
-  console.log(imageList);
 
   return (
     <div className="homepage-wrapper">
@@ -333,11 +331,7 @@ function HomePage() {
           <h2>Media</h2>
           <div className="images">
             {imageList &&
-              imageList.map((url) => (
-                <>
-                  <img key={url} src={url} />
-                </>
-              ))}
+              imageList.map((url) => <img key={url + v4()} src={url} />)}
           </div>
           <div className="input-choose-file-wrapper">
             {loggedIn && (
