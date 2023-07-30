@@ -46,30 +46,28 @@ function HomePage() {
   };
 
   useEffect(() => {
+    let serverImages = [];
     listAll(imageListRef).then((response) => {
+      /* if (response.items) {setImageList([])}*/
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
-          setImageList((prev) => [...prev, url]);
+          if (serverImages.find((el) => el == url)) {
+          } else {
+            serverImages.push(url);
+          }
         });
       });
+      setImageList(serverImages);
     });
   }, []);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScrollMain, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScrollMain);
-    };
-  }, []);
-
-  const handleScrollMain = (e) => {};
-  useEffect(() => {
     let section = data.state ? data.state.section : null;
 
-    if (section) {
+    if (section && section !== "ignore") {
       const element = document.getElementById(section);
       if (element) {
+        data.state.section = "ignore";
         element.scrollIntoView({ behavior: "smooth" });
       } else {
         window.scrollTo({
@@ -78,7 +76,7 @@ function HomePage() {
           behavior: "smooth",
         });
       }
-    } else {
+    } else if (section !== "ignore") {
       window.scrollTo({
         top: 0,
         left: 0,
