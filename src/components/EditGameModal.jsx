@@ -75,7 +75,7 @@ function EditGameModal({ item }) {
           <Stack>
             <DateTimePicker
               id="datepickern"
-              renderInput={(params) => <TextField {...params} />}
+              textField={(params) => <TextField {...params} />}
               defaultValue={moment(updatedDate)}
               onChange={(newValue) => {
                 setUpdatedDate(newValue.toDate());

@@ -61,7 +61,7 @@ function CreateGameModal() {
         <p>Datum i vreme:</p>
         <Stack>
           <DateTimePicker
-            renderInput={(params) => <TextField {...params} />}
+            textField={(params) => <TextField {...params} />}
             defaultValue={moment(gameDate)}
             onChange={(newValue) => {
               setGameDate(newValue.toDate());

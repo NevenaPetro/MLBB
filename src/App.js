@@ -59,7 +59,14 @@ function App() {
             name: doc.data().name,
           });
         });
-        teams.sort((a, b) => a.name.toUpperCase() - b.name.toUpperCase());
+        teams.sort((a, b) => {
+          let nA = a.name.toLowerCase();
+          let nB = b.name.toLowerCase();
+
+          if (nA < nB) return -1;
+          else if (nA > nB) return 1;
+          return 0;
+        });
         setTeams(teams);
       } catch (error) {}
     };
@@ -128,6 +135,7 @@ function App() {
           });
         });
         seasons.sort((a, b) => +a.name - +b.name);
+        console.log(seasons);
         setSeasons(seasons);
       } catch (error) {}
     };

@@ -224,7 +224,7 @@ function HomePage() {
         <h2>Rezultati</h2>
         <ul>
           {games &&
-            games.map(
+            games.filter((e) => e.season == seasons[seasons.length-1].id).map(
               (e) =>
                 e.played && (
                   <li key={e.id}>
@@ -385,11 +385,11 @@ function HomePage() {
         <h2>Kontakt</h2>
         <div className="kontakt-wrapper">
           <h3>Telefoni:</h3>
-          <p>+381 63 592 290</p>
           <p>+381 65 434 7600</p>
+          <p>+381 63 592 290</p>
           <h3>Email:</h3>
-          <p>5ra.bojan.petrovic@gmail.com</p>
           <p>banija003@gmail.com</p>
+          <p>5ra.bojan.petrovic@gmail.com</p>
           <h3>Lokacije:</h3>
           <div className="map-wrapper">
             <div>
